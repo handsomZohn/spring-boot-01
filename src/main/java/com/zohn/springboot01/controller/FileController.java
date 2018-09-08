@@ -19,7 +19,7 @@ import java.util.UUID;
 public class FileController {
 
     @RequestMapping("/api/v1/gopage")
-    public Object index(){
+    public Object index() {
         return "index";
     }
 
@@ -29,7 +29,7 @@ public class FileController {
 
     @RequestMapping("/upload")
     @ResponseBody
-    public JsonDate upload(@RequestParam("head_img")MultipartFile file, HttpServletRequest request){
+    public JsonDate upload(@RequestParam("head_img") MultipartFile file, HttpServletRequest request) {
 
         //file.isEmpty();// 是否为空
         //file.getSize();// 大小限制
@@ -68,12 +68,13 @@ public class FileController {
 }
 
 
-    /**
-     * 文件上传至服务器磁盘[绝对路径]
-     * @param uploadFile FB获取页面传来的文件
-     * @param filePath 文件要存储的位置
-     * @return
-     */
+/**
+ * 文件上传至服务器磁盘[绝对路径]
+ *
+ * @param uploadFile FB获取页面传来的文件
+ * @param filePath 文件要存储的位置
+ * @return
+ */
 /*
     private String upload(FormFile uploadFile, String filePath) {
         String wjid = GenerateId.getGenerateId();// 文件id 文件名字的组成部分

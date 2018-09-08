@@ -12,17 +12,17 @@ import com.zohn.springboot01.domain.User;
 
 @RestController
 public class SampleController {
-	
-	@RequestMapping("/")
-	@ResponseBody
-	String home() {
-		return "Hello World!";
-	}
-	
-	@GetMapping("/testJson")
-	public Object testJson() {
-		return new User("zhangyifeng", null, "18310834045", "123012301230", new Date());
-	}
-	
-	
+
+    @RequestMapping("/")
+    @ResponseBody
+    String home() {
+        return "Hello World!";
+    }
+
+    @GetMapping("/testJson")
+    public Object testJson() {
+        return new User("zhangyifeng", null, "18310834045", "123012301230", new Date());
+    }
+
+
 }
