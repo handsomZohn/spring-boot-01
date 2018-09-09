@@ -63,7 +63,9 @@ public class FileController {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return new JsonDate(1, " upload file failed", null);
+        // No converter found for return value of type:
+        // 原因是没有set和get方法
+        return new JsonDate(-1, " upload file failed", null);
     }
 }
 

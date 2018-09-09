@@ -9,7 +9,9 @@ public class Application {
 	 * 入口
 	 * @param args
 	 */
-    public static void main(String[] args) {
+
+	// 打为jar的时候只能有一个main函数不然不知道从哪里运行
+    /*public static void main(String[] args) {
         SpringApplication.run(Application.class, args);
-    }
+    }*/
 }
