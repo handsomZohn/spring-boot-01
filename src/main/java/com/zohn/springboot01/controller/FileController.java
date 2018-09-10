@@ -52,7 +52,7 @@ public class FileController {
 
         System.out.println("转换后的文件名称:" + fileName);
 
-        File dest = new File(oppositeFilePath + fileName);
+        File dest = new File(absoluteFilePath + fileName);
 
         try {
             file.transferTo(dest);// 一行代码相当于后面的一堆 upload()方法；
