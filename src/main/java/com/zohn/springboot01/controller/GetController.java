@@ -62,6 +62,8 @@ public class GetController {
         params.clear();
         params.put("from", from);
         params.put("size", size);
+        System.out.println("通过触发器控制~~");
+        System.out.println("通过触发器控制热部署~~");
         return params;
     }
 
@@ -69,8 +71,8 @@ public class GetController {
      * 默认值 ；是否是必须参数
      * 用于分页
      *
-     * @param from 页码开始
-     * @param size
+     * @param
+     * @param
      * @return
      * @RequestParam(name = "")
      * name的属性值，等于url里面的=前面的属性名称
