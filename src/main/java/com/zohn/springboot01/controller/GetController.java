@@ -5,6 +5,8 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
+import com.zohn.springboot01.domain.ServerSetting;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -133,6 +135,21 @@ public class GetController {
         String id = request.getParameter("id");// 看着是不是超级熟悉啊 张一峰 哈哈哈
         params.put("id", id);
         return params;
+    }
+
+
+    @Autowired
+    private  ServerSetting serverSetting;
+
+    /**
+     * @param request
+     * @return
+     */
+    @GetMapping("/v1/serverSettingTest")
+    public Object serverSettingTest(HttpServletRequest request) {
+        String appName = serverSetting.getAppName();
+        String da = serverSetting.getDomainAddress();
+        return serverSetting;
     }
 
 

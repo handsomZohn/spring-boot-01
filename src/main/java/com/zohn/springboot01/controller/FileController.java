@@ -2,6 +2,8 @@ package com.zohn.springboot01.controller;
 
 import com.zohn.springboot01.domain.JsonDate;
 import org.apache.catalina.servlet4preview.http.HttpServletRequest;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -16,6 +18,8 @@ import java.util.UUID;
  * 文件上传
  */
 @Controller
+// 读取配置文件的第一种方式 放在controller里面
+@PropertySource({"classpath:resource.properties"})
 public class FileController {
 
     @RequestMapping("/api/v1/gopage")
@@ -24,12 +28,17 @@ public class FileController {
     }
 
     // 上传存放文件的位置
-    private static final String absoluteFilePath = "D:/sysfiles/";
+
+    @Value("${web.file.path}")
+    private static String absoluteFilePath;
     private static final String oppositeFilePath = "F:\\Workspace\\eclipseIDE\\spring-boot-01\\src\\main\\resources\\static\\images\\";
 
     @RequestMapping("/upload")
     @ResponseBody
     public JsonDate upload(@RequestParam("head_img") MultipartFile file, HttpServletRequest request) {
+
+        // 读取配置文件中上传文件的路径
+        System.out.println("配置路径打印，文件路径为：" + absoluteFilePath);
 
         //file.isEmpty();// 是否为空
         //file.getSize();// 大小限制
