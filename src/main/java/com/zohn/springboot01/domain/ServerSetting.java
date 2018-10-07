@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 @Component
 @PropertySource({"classpath:resource.properties"})
 // @ConfigurationProperties
-@ConfigurationProperties(prefix = "test") // 可以配置一个前缀
+@ConfigurationProperties(prefix = "test") // 可以配置一个前缀 用前缀就不用value$
 public class ServerSetting {
 
     // @Value("${test.appName}")

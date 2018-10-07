@@ -12,10 +12,13 @@ public class JsonDate implements Serializable{
     private Object data;// 结果
     private String message;// 错误消息
 
+
+    // 使用 import lombok.Setter;
     // 没有setget返回json会报错
     public int getCode() {
         return code;
     }
+
 
     public void setCode(int code) {
         this.code = code;
