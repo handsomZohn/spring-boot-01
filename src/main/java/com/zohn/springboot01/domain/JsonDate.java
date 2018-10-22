@@ -1,12 +1,13 @@
 package com.zohn.springboot01.domain;
 
+import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
 import java.io.Serializable;
 
-@Getter
-@Setter
+
+@Data
 public class JsonDate implements Serializable{
     private int code;// 状态码0 成功 -1 失败
     private Object data;// 结果
@@ -15,7 +16,8 @@ public class JsonDate implements Serializable{
 
     // 使用 import lombok.Setter;
     // 没有setget返回json会报错
-    public int getCode() {
+    // 会报错的原因是因为没有使用@Data
+   /* public int getCode() {
         return code;
     }
 
@@ -38,7 +40,7 @@ public class JsonDate implements Serializable{
 
     public void setMessage(String message) {
         this.message = message;
-    }
+    }*/
 
     public JsonDate(int code, Object data) {
         this.code = code;
