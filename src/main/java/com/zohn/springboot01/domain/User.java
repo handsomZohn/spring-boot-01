@@ -36,6 +36,13 @@ public class User {
 		CT = cT;
 	}
 
+	public User(String username, String age) {
+		super();
+		this.username = username;
+		this.age = age;
+
+	}
+
 	public String getPwd() {
 		return pwd;
 	}
