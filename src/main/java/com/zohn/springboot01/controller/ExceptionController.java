@@ -1,5 +1,6 @@
 package com.zohn.springboot01.controller;
 
+import com.zohn.springboot01.domain.MyException;
 import com.zohn.springboot01.domain.User;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,5 +24,12 @@ public class ExceptionController {
         int i = 10 / 0;
         return new User("宋明潞","20" + i);
     }
+
+
+    @GetMapping("/myExceptionTest")
+    public Object MyExceptionTest() throws MyException{
+        throw new MyException("499", "服务器连接丢失————————");// 手动抛出异常
+    }
+
 
 }

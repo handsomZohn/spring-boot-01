@@ -32,6 +32,7 @@
         <!--路径的映射跳转用的-->
         <!--如果想不加这个 那么页面要放在resources下面或者static下面-->
         <!--spring-boot的加载路径里面去-->
+        <!--配置系统异常时跳转错误页面-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-thymeleaf</artifactId>
