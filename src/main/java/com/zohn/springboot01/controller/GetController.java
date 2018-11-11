@@ -146,9 +146,20 @@ public class GetController {
      * @return
      */
     @GetMapping("/v1/serverSettingTest")
-    public Object serverSettingTest(HttpServletRequest request) {
+    public Object serverSettingTest(HttpServletRequest request) throws InterruptedException {
         String appName = serverSetting.getAppName();
         String da = serverSetting.getDomainAddress();
+
+        System.out.println("处理器开始处理----------------------------------");
+        long start = System.currentTimeMillis();// 当前毫秒数::
+        Thread.sleep(10000);
+        System.out.println("处理器处理完毕，本次处理耗时："+ (System.currentTimeMillis()-start) +"毫秒，马上返回----------------------------------");
+        // 猜测处理时间会在：假设处理一个请求需要2300ms
+        // 则加上系统睡眠了10000ms
+        // 预计15万ms
+        // 令我没想到的是：只花费了一毫秒----------额滴歌神啊
+        // 处理器处理完毕，本次处理耗时：10001毫秒，马上返回----------------------------------
+
         return serverSetting;
     }
 
