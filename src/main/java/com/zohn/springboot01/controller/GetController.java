@@ -152,5 +152,16 @@ public class GetController {
         return serverSetting;
     }
 
+    /**
+     * @param request
+     * @return
+     */
+    @GetMapping("filter/v1/serverSettingTest")
+    public Object serverSettingTestFilter(HttpServletRequest request) {
+        String appName = serverSetting.getAppName();
+        String da = serverSetting.getDomainAddress();
+        return serverSetting;
+    }
+
 
 }

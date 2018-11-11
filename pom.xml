@@ -6,6 +6,8 @@
     <artifactId>spring-boot-01</artifactId>
     <version>0.0.1-SNAPSHOT</version>
 
+    <!--打包方式 默认是jar包 maven install的时候-->
+
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
@@ -62,6 +64,8 @@
 
     <!--打包依赖-->
     <build>
+        <!--finalName是项目的名字-->
+        <!--<finalName>zohn_springBoot</finalName>-->
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
