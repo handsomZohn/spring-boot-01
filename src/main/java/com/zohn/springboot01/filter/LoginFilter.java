@@ -37,7 +37,7 @@ public class LoginFilter implements Filter {
         if ("zohn".equals(username)) {
             chain.doFilter(request,response);
         } else {
-            httpServletResponse.sendRedirect("/index.html");
+            httpServletResponse.sendRedirect("/index.ftl");
             return;
         }
     }

@@ -174,5 +174,11 @@ public class GetController {
         return serverSetting;
     }
 
+    @GetMapping("api2/v1/account")
+    public Object account () {
+        params.put("money", 1000);
+        System.out.println("GetController的account方法对应api是：：api2/v1/account");
+        return params;
+    }
 
 }
