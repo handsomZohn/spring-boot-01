@@ -28,7 +28,7 @@ public class UserController {
 
 
     /**
-     * 添加
+     * 娣诲姞
      * @return
      */
     @GetMapping("add")
@@ -57,7 +57,7 @@ public class UserController {
     }
 
     /**
-     * get请求在url后面拼接参数时，可以不要@RequestParam
+     * get璇锋眰鍦╱rl鍚庨潰鎷兼帴鍙傛暟鏃讹紝鍙互涓嶈@RequestParam
      *
      * @param name
      * @param id

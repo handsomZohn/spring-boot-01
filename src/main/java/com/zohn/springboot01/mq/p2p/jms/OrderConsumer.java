@@ -12,6 +12,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class OrderConsumer {
 
+    // 实时监听
     @JmsListener(destination = "order.queue")
     public void receiveQueue(String text){
         // 业务逻辑

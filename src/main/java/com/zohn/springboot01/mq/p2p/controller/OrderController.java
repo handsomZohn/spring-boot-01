@@ -48,6 +48,8 @@ public class OrderController {
      */
     @GetMapping("/common")
     public Object common(String msg){
+        // 这个msg是要发送的消息 不能为空
+        // Resolved exception caused by Handler execution: java.lang.IllegalArgumentException: Payload must not be null
         iProcedureService.sendMessage(msg);
         return JsonData.buildSuccess();
     }

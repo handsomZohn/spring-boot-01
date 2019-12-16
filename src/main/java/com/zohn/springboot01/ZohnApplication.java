@@ -74,7 +74,7 @@ public class ZohnApplication {
     //  需要给topic定义独立的JmsListenerContainer
     /**
      * @Description @JmsListener如果不指定独立的containerFactory的话是只能消费queue消息
-     * 修改订阅者container：containerFactory="jmsListenerContainerTopic"
+     * 修改订阅者container：004containerFactory="jmsListenerContainerTopic"
      * @Author zohn
      * @Date 2019/5/28 21:12
      * @Param [activeMQConnectionFactory]

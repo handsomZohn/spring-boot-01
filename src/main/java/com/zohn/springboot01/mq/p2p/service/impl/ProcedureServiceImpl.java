@@ -20,7 +20,7 @@ import javax.jms.Topic;
 public class ProcedureServiceImpl implements IProcedureService {
 
     @Autowired
-    private JmsMessagingTemplate jmsMessagingTemplate;
+    private JmsMessagingTemplate jmsMessagingTemplate;// 用来发送消息到broker的对象
 
     @Autowired
     private Queue queue;
