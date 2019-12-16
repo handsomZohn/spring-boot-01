@@ -17,6 +17,7 @@ public class ExceptionHandler {
 
     //日志
     private static final Logger log = LoggerFactory.getLogger(ExceptionHandler.class);
+
     /**
      * 捕获全局异常 处理不可知异常
      * @param e
@@ -39,6 +40,7 @@ public class ExceptionHandler {
      */
     @org.springframework.web.bind.annotation.ExceptionHandler(value = MyException.class)
     public Object myExceptionTest(MyException e, HttpServletRequest request){
+
         // 返回ModelAndView 去同意的错误页面
         /*ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("PageNotFound.html");

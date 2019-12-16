@@ -21,7 +21,10 @@ public class ExceptionController {
 
     @GetMapping("/exception/test")
     public Object exceptionTest() {
-        int i = 10 / 0;
+        // int i = 10 / 0;// 返回前端的是：：/ by zero
+        int i = 0;
+        User user = null;// 返回前端的消息是：： null
+        user.getAge();
         return new User("宋明潞","20" + i);
     }
 

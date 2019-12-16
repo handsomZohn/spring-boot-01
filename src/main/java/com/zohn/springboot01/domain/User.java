@@ -83,4 +83,7 @@ public class User {
 		this.telephone = telephone;
 	}
 
+
+	public User() {
+	}
 }
