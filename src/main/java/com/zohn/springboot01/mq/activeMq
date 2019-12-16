@@ -1,0 +1,23 @@
+pom中增加依赖
+ <!--整合mq-->
+        <!-- 整合消息队列ActiveMQ -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-activemq</artifactId>
+        </dependency>
+
+        <!-- 如果配置线程池则加入 -->
+        <dependency>
+            <groupId>org.apache.activemq</groupId>
+            <artifactId>activemq-pool</artifactId>
+        </dependency>
+
+
+
+properties中增加配置
+spring.activemq.broker-url=tcp://127.0.0.1:61616
+#spring.activemq.broker-url=failover:(tcp://localhost:61616,tcp://localhost:61617)
+spring.activemq.user=admin
+spring.activemq.password=admin
+spring.activemq.pool.enabled=true
+spring.activemq.pool.max-connections=100
