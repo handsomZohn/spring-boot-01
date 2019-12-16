@@ -59,6 +59,7 @@ public class ZohnApplication {
     }
 
     /**
+     * ActiveMQ的发布订阅模式
      * @Description 创建一个topic  交给spring管理
      * @Author zohn
      * @Date 2019/5/28 20:37
@@ -72,6 +73,7 @@ public class ZohnApplication {
 
 
     //  需要给topic定义独立的JmsListenerContainer
+    //  为了同时支持（点对点）和（发布订阅模式）
     /**
      * @Description @JmsListener如果不指定独立的containerFactory的话是只能消费queue消息
      * 修改订阅者container：004containerFactory="jmsListenerContainerTopic"

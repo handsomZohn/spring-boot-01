@@ -56,6 +56,10 @@ public class ProcedureServiceImpl implements IProcedureService {
     @Autowired
     private Topic topic;
 
+    /**
+     * 消息发布者
+     * @param msg
+     */
     @Override
     public void publish(String msg) {
         this.jmsMessagingTemplate.convertAndSend(this.topic, msg);

@@ -46,4 +46,7 @@ public class TopicSub {
         System.out.println("video.topic consumer receive003:" + string);
     }
 
+    // @JmsListener如果不指定独立的containerFactory的话是只能消费queue消息
+    // 不能同时支持两种模式的消息发布模型
+
 }
