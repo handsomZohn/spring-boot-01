@@ -34,6 +34,20 @@ public class TopicSub {
     public void receiver002(String string) {
         System.out.println("video.topic consumer receive002:" + string);
     }
+
+    /**
+     * @Description 消费者
+     * @Author zohn
+     * @Date 2019\12\17 0017 12:12
+     * @Param [msg]
+     * @Return void
+     */
+    @JmsListener(destination = "video.topic", containerFactory = "jmsListenerContainerTopic")
+    public void receiver004(String msg){
+        // 业务逻辑
+        System.out.println("video.topic consumer receive004:" + msg);
+    }
+
     /**
      * @Description 消费者 订单系统
      * @Author zohn
