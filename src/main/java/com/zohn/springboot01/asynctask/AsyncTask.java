@@ -21,21 +21,21 @@ public class AsyncTask {
         long begin = System.currentTimeMillis();
         Thread.sleep(1000L);
         long end = System.currentTimeMillis();
-        System.out.println("任务01耗时：" + (end - begin) + "ms;");
+        System.out.println("Task01 Time consuming:" + (end - begin) + "ms;");
     }
 
     public void task02() throws InterruptedException{
         long begin = System.currentTimeMillis();
         Thread.sleep(2000L);
         long end = System.currentTimeMillis();
-        System.out.println("任务02耗时：" + (end - begin) + "ms;");
+        System.out.println("Task02 Time consuming:" + (end - begin) + "ms;");
     }
 
     public void task03() throws InterruptedException{
         long begin = System.currentTimeMillis();
         Thread.sleep(3000L);
         long end = System.currentTimeMillis();
-        System.out.println("任务03耗时：" + (end - begin) + "ms;");
+        System.out.println("Tasj03 Time consuming:" + (end - begin) + "ms;");
     }
 
 
@@ -47,24 +47,24 @@ public class AsyncTask {
         long begin = System.currentTimeMillis();
         Thread.sleep(1000L);
         long end = System.currentTimeMillis();
-        System.out.println("任务04耗时：" + (end - begin) + "ms;");
-        return new AsyncResult<>("任务04");
+        System.out.println("Tasj04 Time consuming:" + (end - begin) + "ms;");
+        return new AsyncResult<>("Task04");
     }
 
     public Future<String> task05() throws InterruptedException{
         long begin = System.currentTimeMillis();
         Thread.sleep(2000L);
         long end = System.currentTimeMillis();
-        System.out.println("任务05耗时：" + (end - begin) + "ms;");
-        return new AsyncResult<>("任务05");
+        System.out.println("Task05Time consuming:" + (end - begin) + "ms;");
+        return new AsyncResult<>("Task05");
     }
 
     public Future<String> task06() throws InterruptedException{
         long begin = System.currentTimeMillis();
         Thread.sleep(3000L);
         long end = System.currentTimeMillis();
-        System.out.println("任务06耗时：" + (end - begin) + "ms;");
-        return new AsyncResult<>("任务06");
+        System.out.println("Tasj06 Time consuming:" + (end - begin) + "ms;");
+        return new AsyncResult<>("Task06");
     }
 
 

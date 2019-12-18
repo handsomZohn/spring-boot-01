@@ -53,7 +53,7 @@ public class AsyncTaskController {
         // return JsonData.buildSuccess("task01、02、03一共耗时：" + (end - begin) + "ms");
 
         // 异步耗时3010  同步耗时6003ms
-        String DescOfExeResult = "task04、05、06一共耗时：" + (end - begin) + "ms";
+        String DescOfExeResult = "task04,05,06 Time consuming:" + (end - begin) + "ms";
         System.out.println(DescOfExeResult);
         return JsonData.buildSuccess(DescOfExeResult);
     }
