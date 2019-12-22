@@ -49,7 +49,7 @@ public class TopicSub {
     }
 
     /**
-     * @Description 消费者 订单系统
+     * @Description 消费者 订单系统  如果不是发布订阅的
      * @Author zohn
      * @Date 2019/5/28 20:52
      * @Param []
