@@ -53,4 +53,8 @@ public class StopThread {
         return nextSerialNumber.getAndIncrement();
     }
 
+    // 安全发布对象引用的方法：
+    // 换一种提问方法，就是怎么保证数据的安全性？
+     // 静态域、volatile域、final域、正常锁定访问的域、放入并发集合中
+
 }
