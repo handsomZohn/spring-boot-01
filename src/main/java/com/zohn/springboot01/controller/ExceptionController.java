@@ -25,13 +25,13 @@ public class ExceptionController {
         int i = 0;
         User user = null;// 返回前端的消息是：： null
         user.getAge();
-        return new User("宋明潞","20" + i);
+        return new User("zohn","20" + i);
     }
 
 
     @GetMapping("/myExceptionTest")
     public Object MyExceptionTest() throws MyException{
-        throw new MyException("499", "服务器连接丢失————————");// 手动抛出异常
+        throw new MyException("499", "lose conn with server");// 手动抛出异常
     }
 
 

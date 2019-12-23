@@ -49,22 +49,22 @@ public class FileController {
         // 获取上传文件名字
         String fileName = file.getName(); // 获取的是输入框的name属性值
         fileName = file.getOriginalFilename();// 文件的名字
-        System.out.println("上传的文件名字为：" + fileName);
+        System.out.println("name of upload file:" + fileName);
 
         // 获取文件的后缀名字
         String suffixName = fileName.substring(fileName.indexOf("."));
-        System.out.println("上传的文件的后缀名字是：" + suffixName);
+        System.out.println("suffixName of upload file" + suffixName);
 
 
         // 文件上传之后的路径 + 名字
         fileName = UUID.randomUUID() + suffixName;
 
-        System.out.println("转换后的文件名称:" + fileName);
+        System.out.println("trans name of upload file" + fileName);
 
         File dest = new File(absoluteFilePath + fileName);
 
         try {
-            file.transferTo(dest);// 一行代码相当于后面的一堆 upload()方法；
+            file.transferTo(dest);// 一行代码相当于后面的 upload()方法；
             JsonDate jsonDate = new JsonDate(0, fileName);
             return jsonDate;
         } catch (IllegalStateException e) {

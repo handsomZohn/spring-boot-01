@@ -41,7 +41,7 @@ public class ExceptionHandler {
     @org.springframework.web.bind.annotation.ExceptionHandler(value = MyException.class)
     public Object myExceptionTest(MyException e, HttpServletRequest request){
 
-        // 返回ModelAndView 去同意的错误页面
+        // 返回ModelAndView 去统一的错误页面
         /*ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("PageNotFound.html");
         modelAndView.addObject("msg", e.getMessage());
