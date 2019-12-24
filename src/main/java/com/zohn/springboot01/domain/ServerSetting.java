@@ -23,6 +23,17 @@ public class ServerSetting {
     private String domainAddress;// 域名地址
 
 
+    private String filePath;// 上传文件所存放的位置
+
+
+    public String getFilePath() {
+        return filePath;
+    }
+
+    public void setFilePath(String filePath) {
+        this.filePath = filePath;
+    }
+
     public String getAppName() {
         return appName;
     }

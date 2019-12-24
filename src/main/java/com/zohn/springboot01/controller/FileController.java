@@ -1,9 +1,12 @@
 package com.zohn.springboot01.controller;
 
 import com.zohn.springboot01.domain.JsonDate;
+import com.zohn.springboot01.domain.ServerSetting;
 import org.apache.catalina.servlet4preview.http.HttpServletRequest;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.PropertySource;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -18,7 +21,7 @@ import java.util.UUID;
  * 文件上传
  */
 @Controller
-// 读取配置文件的第一种方式 放在controller里面
+// 读取配置文件的第一种方式 放在controller里面 使用@Value注解读取时 默认读取的是application.properties
 @PropertySource({"classpath:resource.properties"})
 public class FileController {
 
@@ -28,17 +31,30 @@ public class FileController {
     }
 
     // 上传存放文件的位置
-
+    // 绝对路径 指的是物理机磁盘路径
     @Value("${web.file.path}")
     private static String absoluteFilePath;
+
+    @Autowired
+    private ServerSetting serverSetting;
+
     private static final String oppositeFilePath = "F:\\Workspace\\eclipseIDE\\spring-boot-01\\src\\main\\resources\\static\\images\\";
 
     @RequestMapping("/upload")
     @ResponseBody
     public JsonDate upload(@RequestParam("head_img") MultipartFile file, HttpServletRequest request) {
 
+        absoluteFilePath = null == absoluteFilePath ? serverSetting.getFilePath() : absoluteFilePath;
+
         // 读取配置文件中上传文件的路径
-        System.out.println("配置路径打印，文件路径为：" + absoluteFilePath);
+        System.out.println("FilePathOfSetting:" + absoluteFilePath);
+
+        // 读取到的文件路径 如果不存在（或者已存在但不是目录）就创建
+        File filePath = new File(absoluteFilePath);
+        if (!filePath.exists() || !filePath.isDirectory()){
+            filePath.mkdirs();
+        }
+
 
         //file.isEmpty();// 是否为空
         //file.getSize();// 大小限制
@@ -53,13 +69,13 @@ public class FileController {
 
         // 获取文件的后缀名字
         String suffixName = fileName.substring(fileName.indexOf("."));
-        System.out.println("suffixName of upload file" + suffixName);
+        System.out.println("suffixName of upload file: " + suffixName);
 
 
         // 文件上传之后的路径 + 名字
         fileName = UUID.randomUUID() + suffixName;
 
-        System.out.println("trans name of upload file" + fileName);
+        System.out.println("trans name of upload file: " + fileName);
 
         File dest = new File(absoluteFilePath + fileName);
 
@@ -74,7 +90,7 @@ public class FileController {
         }
         // No converter found for return value of type:
         // 原因是没有set和get方法
-        return new JsonDate(-1, " upload file failed", null);
+        return new JsonDate(-1, " upload file failed ", null);
     }
 }
 

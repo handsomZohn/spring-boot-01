@@ -138,13 +138,11 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
+                    <!--没有该配置 devtools不生效   -->
+                    <fork>true</fork>
+                    <addResources>true</addResources>
                     <jvmArguments>-Dfile.encoding=UTF-8</jvmArguments>
                 </configuration>
-                <!--<configuration>-->
-                <!--&lt;!&ndash;没有该配置 devtools不生效   &ndash;&gt;-->
-                <!--<fork>true</fork>-->
-                <!--<addResources>true</addResources>-->
-                <!--</configuration>-->
             </plugin>
         </plugins>
     </build>
