@@ -48,7 +48,7 @@ public class RedisController {
     @GetMapping("/addUser")
     @ResponseBody
     public Object addUser() {
-        User user = new User("张无忌", "abc", "12", "18310834045", new Date());
+        User user = new User("zhangwuji", "abc", "12", "18310834045", new Date());
         String s = JsonUtils.obj2String(user);
         boolean flag = redisClient.set("redis:user:12", s);
         return JsonData.buildSuccess(flag);
