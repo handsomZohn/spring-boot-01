@@ -6,7 +6,6 @@ import org.apache.catalina.servlet4preview.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.PropertySource;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -22,7 +21,7 @@ import java.util.UUID;
  */
 @Controller
 // 读取配置文件的第一种方式 放在controller里面 使用@Value注解读取时 默认读取的是application.properties
-@PropertySource({"classpath:resource.properties"})
+// @PropertySource({"classpath:resource.properties"})
 public class FileController {
 
     @RequestMapping("/api/v1/gopage")
@@ -32,7 +31,7 @@ public class FileController {
 
     // 上传存放文件的位置
     // 绝对路径 指的是物理机磁盘路径
-    @Value("${web.file.path}")
+    @Value("${web.image_path}")
     private static String absoluteFilePath;
 
     @Autowired
