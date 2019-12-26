@@ -1,4 +1,4 @@
-package com.zohn.springboot01.mq.p2p.jms;
+package com.zohn.springboot01.activemq.p2p.jms;
 
 import org.springframework.jms.annotation.JmsListener;
 import org.springframework.stereotype.Component;

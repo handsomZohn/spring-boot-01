@@ -1,7 +1,7 @@
-package com.zohn.springboot01.mq.p2p.controller;
+package com.zohn.springboot01.activemq.p2p.controller;
 
 import com.zohn.springboot01.domain.JsonData;
-import com.zohn.springboot01.mq.p2p.service.IProcedureService;
+import com.zohn.springboot01.activemq.p2p.service.IProcedureService;
 import org.apache.activemq.command.ActiveMQQueue;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;

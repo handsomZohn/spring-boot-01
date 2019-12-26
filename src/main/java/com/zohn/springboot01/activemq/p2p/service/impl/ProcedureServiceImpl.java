@@ -1,9 +1,8 @@
-package com.zohn.springboot01.mq.p2p.service.impl;
+package com.zohn.springboot01.activemq.p2p.service.impl;
 
-import com.zohn.springboot01.mq.p2p.service.IProcedureService;
+import com.zohn.springboot01.activemq.p2p.service.IProcedureService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jms.core.JmsMessagingTemplate;
-import org.springframework.jms.core.JmsTemplate;
 import org.springframework.stereotype.Service;
 
 import javax.jms.Destination;

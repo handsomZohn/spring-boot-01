@@ -1,4 +1,4 @@
-package com.zohn.springboot01.mq.p2p.service;
+package com.zohn.springboot01.activemq.p2p.service;
 
 import javax.jms.Destination;
 /**
