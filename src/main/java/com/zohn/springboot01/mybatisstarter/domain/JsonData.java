@@ -1,4 +1,4 @@
-package com.zohn.springboot01.mybatisstarter.domain;
+package com.zohn.springboot01.mybatisStarter.domain;
 
 import lombok.Data;
 

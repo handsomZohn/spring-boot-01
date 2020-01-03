@@ -1,6 +1,6 @@
 package com.zohn.springboot01.mybatisStarter.controller;
 
-import com.zohn.springboot01.mybatisstarter.domain.JsonData;
+import com.zohn.springboot01.mybatisStarter.domain.JsonData;
 import com.zohn.springboot01.mybatisStarter.domain.User;
 import com.zohn.springboot01.mybatisStarter.mapper.UserMapper;
 import com.zohn.springboot01.mybatisStarter.service.UserService;

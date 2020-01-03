@@ -1,6 +1,6 @@
 package com.zohn.springboot01.controller;
 
-import com.zohn.springboot01.mybatisstarter.domain.JsonData;
+import com.zohn.springboot01.mybatisStarter.domain.JsonData;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.GetMapping;
