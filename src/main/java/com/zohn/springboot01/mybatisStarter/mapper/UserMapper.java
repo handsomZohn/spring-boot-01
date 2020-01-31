@@ -1,6 +1,6 @@
-package com.zohn.springboot01.mybatisstarter.mapper;
+package com.zohn.springboot01.mybatisStarter.mapper;
 
-import com.zohn.springboot01.mybatisstarter.domain.User;
+import com.zohn.springboot01.mybatisStarter.domain.User;
 import org.apache.ibatis.annotations.*;
 
 import java.util.List;

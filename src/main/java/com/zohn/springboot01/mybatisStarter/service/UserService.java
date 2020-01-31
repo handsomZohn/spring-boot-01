@@ -1,6 +1,6 @@
-package com.zohn.springboot01.mybatisstarter.service;
+package com.zohn.springboot01.mybatisStarter.service;
 
-import com.zohn.springboot01.mybatisstarter.domain.User;
+import com.zohn.springboot01.mybatisStarter.domain.User;
 import org.springframework.stereotype.Service;
 
 /**
