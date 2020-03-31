@@ -25,6 +25,6 @@ public class TestTask {
     public void sum(){
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat();
         String format = simpleDateFormat.format(new Date());
-        // System.out.println("当前时间：" + format);
+        System.out.println("当前时间：" + format);
     }
 }
