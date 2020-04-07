@@ -1,9 +1,11 @@
 package com.zohn.springboot01;
 
+import org.apache.activemq.command.ActiveMQObjectMessage;
 import org.apache.activemq.command.ActiveMQQueue;
 import org.apache.activemq.command.ActiveMQTopic;
 import org.apache.ibatis.annotations.Mapper;
 import org.mybatis.spring.annotation.MapperScan;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.servlet.MultipartConfigFactory;
@@ -55,7 +57,7 @@ public class ZohnApplication {
      */
     @Bean
     public Queue queue () {
-        return new ActiveMQQueue("common.queue");
+        return new ActiveMQQueue("init.common.queue");
     }
 
     /**
@@ -68,7 +70,7 @@ public class ZohnApplication {
      */
     @Bean
     public Topic topic() {
-        return new ActiveMQTopic("video.topic");
+        return new ActiveMQTopic("init.video.topic");
     }
 
 
@@ -89,4 +91,5 @@ public class ZohnApplication {
         bean.setConnectionFactory(activeMQConnectionFactory);
         return bean;
     }
+
 }

@@ -1,6 +1,7 @@
 package com.zohn.springboot01.activemq.p2p.service.impl;
 
 import com.zohn.springboot01.activemq.p2p.service.IProcedureService;
+import org.apache.activemq.command.ActiveMQObjectMessage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jms.core.JmsMessagingTemplate;
 import org.springframework.stereotype.Service;
@@ -10,7 +11,7 @@ import javax.jms.Queue;
 import javax.jms.Topic;
 
 /**
- *@Description 消息生产者实现类 
+ *@Description 消息生产者实现类
  *@CreateDate 19/04/29 17:02
  *@Author Administrator
  *@Version 1.0
@@ -49,6 +50,20 @@ public class ProcedureServiceImpl implements IProcedureService {
         jmsMessagingTemplate.convertAndSend(this.queue, msgName);
     }
 
+    /**
+     * @Description 发送实体
+     * @Author zohn
+     * @Date 2020\4\1 0001 11:54
+     * @Param [msg, destination]
+     * @Return void
+     */
+    @Override
+    public void send(ActiveMQObjectMessage msg, Destination destination) {
+        jmsMessagingTemplate.convertAndSend(destination, msg);
+    }
+
+
+
 
     // ============================================================发布订阅相关代码=====================
 
@@ -57,6 +72,7 @@ public class ProcedureServiceImpl implements IProcedureService {
 
     /**
      * 消息发布者
+     *
      * @param msg
      */
     @Override

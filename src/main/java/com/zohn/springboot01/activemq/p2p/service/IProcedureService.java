@@ -1,14 +1,16 @@
 package com.zohn.springboot01.activemq.p2p.service;
 
+import org.apache.activemq.command.ActiveMQObjectMessage;
+
 import javax.jms.Destination;
 /**
- *@Description 消息生产者 
+ *@Description 消息生产者
  *@CreateDate 19/04/29 17:00
  *@Author Administrator
  *@Version 1.0
  */
 public interface IProcedureService {
-    
+
     /**
      * @Description 发送消息 提供消息的名字 以及发送消息的目的地 发送到哪一个队列
      * @Author zohn
@@ -34,4 +36,13 @@ public interface IProcedureService {
      * @Return void
      */
     void publish(String msg);
+
+    /**
+     * @Description
+     * @Author zohn
+     * @Date 2020\4\1 0001 11:31
+     * @Param [msg]
+     * @Return void
+     */
+    void send(ActiveMQObjectMessage msg, Destination destination);
 }
