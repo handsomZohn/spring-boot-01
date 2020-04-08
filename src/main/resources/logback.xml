@@ -3,10 +3,38 @@
 
     <appender name="consoleApp" class="ch.qos.logback.core.ConsoleAppender">
         <layout class="ch.qos.logback.classic.PatternLayout">
-            <pattern>
+            <!--<pattern>
                 %date{yyyy-MM-dd HH:mm:ss.SSS} %-5level[%thread]%logger{56}.%method:%L -%msg%n
+            </pattern>-->
+            <pattern>
+                %yellow(%date{yyyy-MM-dd HH:mm:ss}) |%highlight(%-5level) |%green(%logger:%line) |%black(%msg%n)
             </pattern>
         </layout>
+
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS, Asia/Shanghai} %highlight(%5p) --- [%-5t] %cyan(%c{36}): %m%n</pattern>
+            <!-- 常用的Pattern变量 -->
+            <!--
+              <pattern>
+                  %d{yyyy-MM-dd HH:mm:ss} [%level] - %msg%n
+                  Logger: %logger
+                  Class: %class
+                  File: %file
+                  Caller: %caller
+                  Line: %line
+                  Message: %m
+                  Method: %M
+                  Relative: %relative
+                  Thread: %thread
+                  Exception: %ex
+                  xException: %xEx
+                  nopException: %nopex
+                  rException: %rEx
+                  Marker: %marker
+                  %n
+              </pattern>
+            -->
+        </encoder>
     </appender>
 
     <appender name="fileInfoApp" class="ch.qos.logback.core.rolling.RollingFileAppender">
