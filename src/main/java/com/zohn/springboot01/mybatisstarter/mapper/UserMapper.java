@@ -62,4 +62,11 @@ public interface UserMapper {
      */
     @Delete("delete from user where id = #{id}")
     void delete(String id);
+
+    /**
+     * 批量插入
+     * @param name
+     */
+    @Insert("Insert into user values (#{name})")
+    void addUser(@Param("name") String name);
 }
