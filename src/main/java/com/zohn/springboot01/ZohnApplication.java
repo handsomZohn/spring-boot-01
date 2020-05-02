@@ -30,7 +30,8 @@ import javax.servlet.annotation.MultipartConfig;
  */
 @SpringBootApplication
 @ServletComponentScan
-@MapperScan("com.zohn.springboot01.mybatisstarter.mapper")
+// @MapperScan("com.zohn.springboot01.mybatisstarter.mapper")
+@MapperScan("com.zohn.springboot01.xdvideo.mapper")
 @EnableScheduling
 // @EnableAsync
 @EnableJms
