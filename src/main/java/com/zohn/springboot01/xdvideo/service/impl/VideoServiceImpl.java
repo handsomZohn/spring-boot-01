@@ -1,8 +1,9 @@
 package com.zohn.springboot01.xdvideo.service.impl;
 
 
+import com.zohn.springboot01.mybatisstarter.mapper.VideoMapper;
 import com.zohn.springboot01.xdvideo.domain.Video;
-import com.zohn.springboot01.xdvideo.mapper.VideoMapper;
+
 import com.zohn.springboot01.xdvideo.service.VideoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

@@ -16,7 +16,7 @@ import javax.jms.Topic;
  *@Author Administrator
  *@Version 1.0
  */
-@Service
+@Service("procedureService")
 public class ProcedureServiceImpl implements IProcedureService {
 
     @Autowired

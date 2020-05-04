@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 import java.io.UnsupportedEncodingException;
 import java.util.Map;
 
-@Service
+@Service("com.zohn.springboot01.xdvideo.service.impl.UserServiceImpl")
 public class UserServiceImpl implements UserService {
 
     @Autowired

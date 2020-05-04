@@ -17,6 +17,7 @@
     <properties>
         <java.version>1.8</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <rocketmq.version>4.1.0-incubating</rocketmq.version>
     </properties>
 
     <dependencies>
@@ -60,6 +61,7 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-devtools</artifactId>
             <optional>true</optional>
+            <scope>true</scope>
         </dependency>
 
         <dependency>
@@ -118,6 +120,18 @@
             <artifactId>spring-boot-starter-activemq</artifactId>
         </dependency>
 
+        <!--整合消息队列RocketMQ-->
+        <dependency>
+            <groupId>org.apache.rocketmq</groupId>
+            <artifactId>rocketmq-client</artifactId>
+            <version>${rocketmq.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.rocketmq</groupId>
+            <artifactId>rocketmq-common</artifactId>
+            <version>${rocketmq.version}</version>
+        </dependency>
+
         <!-- 如果配置线程池则加入 -->
         <dependency>
             <groupId>org.apache.activemq</groupId>
@@ -131,7 +145,7 @@
             <version>1.2.68</version>
         </dependency>
 
-        <!--容器依赖由默认的tomcat 变为jetty-->
+        <!--容器依赖由默认的tomcat 变为jetty
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
@@ -146,7 +160,7 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-jetty</artifactId>
-        </dependency>
+        </dependency>-->
 
 
         <!--引入监视器 Actuator-->
@@ -215,6 +229,7 @@
                 <configuration>
                     <!--没有该配置 devtools不生效   -->
                     <fork>true</fork>
+                    <!--没有该配置 devtools不生效   -->
                     <addResources>true</addResources>
                     <jvmArguments>-Dfile.encoding=UTF-8</jvmArguments>
                 </configuration>

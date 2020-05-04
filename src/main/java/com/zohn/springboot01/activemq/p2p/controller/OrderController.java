@@ -2,11 +2,13 @@ package com.zohn.springboot01.activemq.p2p.controller;
 
 import com.alibaba.fastjson.JSON;
 import com.zohn.springboot01.activemq.p2p.entity.Gwxx;
+import com.zohn.springboot01.activemq.p2p.service.impl.ProcedureServiceImpl;
 import com.zohn.springboot01.domain.JsonData;
 import com.zohn.springboot01.activemq.p2p.service.IProcedureService;
 import org.apache.activemq.command.ActiveMQObjectMessage;
 import org.apache.activemq.command.ActiveMQQueue;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -29,7 +31,8 @@ import java.util.List;
 public class OrderController {
 
     @Autowired
-    private IProcedureService iProcedureService;
+    @Qualifier("procedureService")
+    private IProcedureService procedureService;
 
     // =================================================点对点模式=====================================================
     /**
@@ -43,7 +46,7 @@ public class OrderController {
     public Object order(String msg){
         // 生成消息队列
         Destination destination = new ActiveMQQueue("order.queue");
-        iProcedureService.sendMessage(msg, destination);
+        procedureService.sendMessage(msg, destination);
         return JsonData.buildSuccess();
     }
 
@@ -58,7 +61,7 @@ public class OrderController {
     public Object common(String msg){
         // 这个msg是要发送的消息 不能为空
         // Resolved exception caused by Handler execution: java.lang.IllegalArgumentException: Payload must not be null
-        iProcedureService.sendMessage(msg);
+        procedureService.sendMessage(msg);
         return JsonData.buildSuccess();
     }
 
@@ -81,7 +84,7 @@ public class OrderController {
         } catch (JMSException e) {
             e.printStackTrace();
         }
-        iProcedureService.send(msg,destination);
+        procedureService.send(msg,destination);
         return JsonData.buildSuccess();
     }
 
@@ -110,7 +113,7 @@ public class OrderController {
         String s = JSON.toJSONString(gwxxList);
 
         // 存入mq
-        iProcedureService.sendMessage(s, destination);
+        procedureService.sendMessage(s, destination);
 
 
         return JsonData.buildSuccess();
@@ -128,7 +131,7 @@ public class OrderController {
      */
     @GetMapping("/topic")
     public Object topic(String msg){
-        iProcedureService.publish(msg);
+        procedureService.publish(msg);
         return JsonData.buildSuccess();
     }
 

@@ -1,9 +1,10 @@
 package com.zohn.springboot01.xdvideo.controller;
 
 
+import com.zohn.springboot01.mybatisstarter.mapper.VideoMapper;
 import com.zohn.springboot01.xdvideo.config.WeChatConfig;
 import com.zohn.springboot01.xdvideo.domain.JsonData;
-import com.zohn.springboot01.xdvideo.mapper.VideoMapper;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;

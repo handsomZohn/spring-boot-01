@@ -3,6 +3,7 @@ package com.zohn.springboot01.activemq.p2p.jms;
 import com.alibaba.fastjson.JSON;
 import com.zohn.springboot01.activemq.p2p.entity.Gwxx;
 import org.apache.activemq.command.ActiveMQObjectMessage;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.jms.annotation.JmsListener;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;

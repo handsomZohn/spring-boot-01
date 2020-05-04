@@ -11,6 +11,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.servlet.MultipartConfigFactory;
 import org.springframework.boot.web.servlet.ServletComponentScan;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.jms.annotation.EnableJms;
 import org.springframework.jms.config.DefaultJmsListenerContainerFactory;
 import org.springframework.jms.config.JmsListenerContainerFactory;
@@ -30,10 +31,9 @@ import javax.servlet.annotation.MultipartConfig;
  */
 @SpringBootApplication
 @ServletComponentScan
-// @MapperScan("com.zohn.springboot01.mybatisstarter.mapper")
-@MapperScan("com.zohn.springboot01.xdvideo.mapper")
+@MapperScan("com.zohn.springboot01.mybatisstarter.mapper")
 @EnableScheduling
-// @EnableAsync
+@EnableAsync
 @EnableJms
 public class ZohnApplication {
     public static void main(String[] args) {

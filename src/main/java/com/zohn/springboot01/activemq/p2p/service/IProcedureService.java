@@ -1,6 +1,8 @@
 package com.zohn.springboot01.activemq.p2p.service;
 
 import org.apache.activemq.command.ActiveMQObjectMessage;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Service;
 
 import javax.jms.Destination;
 /**
@@ -16,7 +18,7 @@ public interface IProcedureService {
      * @Author zohn
      * @Date 19/04/29 17:00
      * @Param [msgName 消息名字, destination 消息位置]
-     * @Return void
+     * @Return voidapi/v1/video/page
      */
     void sendMessage(final String msgName, Destination destination);
     /**

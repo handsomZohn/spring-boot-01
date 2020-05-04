@@ -20,8 +20,8 @@ public class TestTask {
      * 每隔10秒  执行任务
      *
      */
-    //@Scheduled(fixedRate = 1000*10)
-    @Scheduled(cron = "*/10 * * * * *")
+    // @Scheduled(fixedRate = 1000*10)
+    // @Scheduled(cron = "*/10 * * * * *")
     public void sum(){
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat();
         String format = simpleDateFormat.format(new Date());

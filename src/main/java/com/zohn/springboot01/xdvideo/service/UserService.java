@@ -2,6 +2,7 @@ package com.zohn.springboot01.xdvideo.service;
 
 
 import com.zohn.springboot01.xdvideo.domain.User;
+import org.springframework.stereotype.Service;
 
 /**
  *@Description 用户业务接口类
@@ -9,6 +10,7 @@ import com.zohn.springboot01.xdvideo.domain.User;
  *@Author zohn
  *@Version 1.0
  */
+@Service("com.zohn.springboot01.xdvideo.service.impl.UserService")
 public interface UserService {
    User saveWechatUser(String code);
 }

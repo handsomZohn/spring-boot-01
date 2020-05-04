@@ -43,6 +43,21 @@ public class WechatController {
         return JsonData.buildSuccess(qrcodeUrl);
     }
 
+    @GetMapping("login_url_red")
+    public String loginUrlRed(@RequestParam(value = "access_page", required = true) String accessPage) throws UnsupportedEncodingException {
+
+        // 开放平台重定向地址
+        String redirectUrl = weChatConfig.getOpenRedirectUrl();
+
+        // 对开放平台重定向地址进行编码（urlEncode）
+        String callbackurl = URLEncoder.encode(redirectUrl, "UTF-8");
+
+        // 获取生成二维码地址返回的地址肯定包含微信的域名
+        String qrcodeUrl = String.format(weChatConfig.getOpenQrcodeUrl(), weChatConfig.getOpenAppid(), callbackurl, accessPage);
+
+        return "redirect:qrcodeUrl";
+    }
+
     /**
      * @Description 扫码登录之后的回调
      * @Author zohn
