@@ -13,12 +13,11 @@ import javax.jms.Destination;
  */
 public interface IProcedureService {
 
+
     /**
-     * @Description 发送消息 提供消息的名字 以及发送消息的目的地 发送到哪一个队列
-     * @Author zohn
-     * @Date 19/04/29 17:00
-     * @Param [msgName 消息名字, destination 消息位置]
-     * @Return voidapi/v1/video/page
+     * @DeDescription 发送消息 提供消息的名字 以及发送消息的目的地 发送到哪一个队列
+     * @param msgName
+     * @param destination
      */
     void sendMessage(final String msgName, Destination destination);
     /**

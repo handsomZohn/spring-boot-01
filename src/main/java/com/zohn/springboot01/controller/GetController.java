@@ -132,7 +132,8 @@ public class GetController {
     @GetMapping("/v1/requestTest")
     public Object httpServletRequestTest(HttpServletRequest request) {
         params.clear();
-        String id = request.getParameter("id");// 看着是不是超级熟悉啊 张一峰 哈哈哈
+        // 看着是不是超级熟悉啊 张一峰 哈哈哈
+        String id = request.getParameter("id");
         params.put("id", id);
         return params;
     }
@@ -151,7 +152,8 @@ public class GetController {
         String da = serverSetting.getDomainAddress();
 
         System.out.println("Start processing----------------------------------");
-        long start = System.currentTimeMillis();// 当前毫秒数::
+        // 当前毫秒数::
+        long start = System.currentTimeMillis();
         Thread.sleep(10000);
         System.out.println("Processed, spend time "+ (System.currentTimeMillis()-start) +"ms,return right now----------------------------------");
         // 猜测处理时间会在：假设处理一个请求需要2300ms

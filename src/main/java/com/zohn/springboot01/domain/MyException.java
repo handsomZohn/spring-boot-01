@@ -10,8 +10,14 @@ package com.zohn.springboot01.domain;
  * @Version: 1.0
  */
 public class MyException extends RuntimeException {
-    private String code;// 状态码
-    private String msg;// 错误消息
+    /**
+     * 状态码
+     */
+    private String code;
+    /**
+     * 错误消息
+     */
+    private String msg;
 
 
     public MyException(String code, String msg) {

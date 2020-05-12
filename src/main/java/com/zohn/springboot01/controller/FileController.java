@@ -20,8 +20,10 @@ import java.util.UUID;
  * 文件上传
  */
 @Controller
-// 读取配置文件的第一种方式 放在controller里面 使用@Value注解读取时 默认读取的是application.properties
-// @PropertySource({"classpath:resource.properties"})
+/**
+ * 读取配置文件的第一种方式 放在controller里面 使用@Value注解读取时 默认读取的是application.properties
+ * @PropertySource({"classpath:resource.properties"})
+ */
 public class FileController {
 
     @RequestMapping("/api/v1/gopage")
@@ -29,15 +31,17 @@ public class FileController {
         return "index";
     }
 
-    // 上传存放文件的位置
-    // 绝对路径 指的是物理机磁盘路径
+    /**
+     * 上传存放文件的位置
+     * 绝对路径 指的是物理机磁盘路径
+     */
     @Value("${web.image_path}")
     private static String absoluteFilePath;
 
     @Autowired
     private ServerSetting serverSetting;
 
-    private static final String oppositeFilePath = "F:\\Workspace\\eclipseIDE\\spring-boot-01\\src\\main\\resources\\static\\images\\";
+    private static final String OPPOSITE_FILE_PATH = "F:\\Workspace\\eclipseIDE\\spring-boot-01\\src\\main\\resources\\static\\images\\";
 
     @RequestMapping("/upload")
     @ResponseBody
@@ -51,7 +55,7 @@ public class FileController {
         // 读取到的文件路径 如果不存在（或者已存在但不是目录）就创建
         File filePath = new File(absoluteFilePath);
         if (!filePath.exists() || !filePath.isDirectory()){
-            filePath.mkdirs();
+            boolean mkdirs = filePath.mkdirs();
         }
 
 
@@ -62,8 +66,10 @@ public class FileController {
         System.out.println("name:" + name);
 
         // 获取上传文件名字
-        String fileName = file.getName(); // 获取的是输入框的name属性值
-        fileName = file.getOriginalFilename();// 文件的名字
+        // 获取的是输入框的name属性值
+        String fileName = file.getName();
+        // 文件的名字
+        fileName = file.getOriginalFilename();
         System.out.println("name of upload file:" + fileName);
 
         // 获取文件的后缀名字
@@ -79,12 +85,11 @@ public class FileController {
         File dest = new File(absoluteFilePath + fileName);
 
         try {
-            file.transferTo(dest);// 一行代码相当于后面的 upload()方法；
+            // 一行代码相当于后面的 upload()方法；
+            file.transferTo(dest);
             JsonDate jsonDate = new JsonDate(0, fileName);
             return jsonDate;
-        } catch (IllegalStateException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
+        } catch (IllegalStateException | IOException e) {
             e.printStackTrace();
         }
         // No converter found for return value of type:

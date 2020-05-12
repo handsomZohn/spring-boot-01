@@ -13,7 +13,8 @@ public class ThymeleafController {
 
     @GetMapping("hello")
     public String index() {
-        return "index";// 返回index.html页面 不用加后缀，因为已经指定好了
+        // 返回index.html页面 不用加后缀，因为已经指定好了
+        return "index";
     }
 
     @Autowired

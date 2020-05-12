@@ -34,7 +34,7 @@ public class OrderConsumer {
     }
 
     @JmsListener(destination = "gwxx.queue")
-    public void gwxxDXQueue(ActiveMQObjectMessage msg) throws Exception{
+    public void gwxxDataExchangeQueue(ActiveMQObjectMessage msg) throws Exception{
         Gwxx gwxx = (Gwxx) msg.getObject();
         String s = gwxx.toString();
         System.out.println("======^_^======变量s值为: " + s + ", " + "当前类以及方法名字是: OrderConsumer.gwxxDXQueue()");
@@ -54,7 +54,7 @@ public class OrderConsumer {
      * @Return void
      */
     @JmsListener(destination = "gwxx.queue.list")
-    public void gwxxDXListQueue(String str) throws Exception{
+    public void gwxxDataExchangeListQueue(String str) throws Exception{
         List<Gwxx> gwxxList = JSON.parseArray(str, Gwxx.class);
         // 转为gwxx集合
         String s = gwxxList.toString();

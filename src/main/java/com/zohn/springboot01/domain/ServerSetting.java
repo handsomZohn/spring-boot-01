@@ -15,15 +15,23 @@ public class ServerSetting {
     // @Value("${test.appName}")
     // private String appName;// 应用的名字
     // @Value("appName")
-    private String appName;// 应用的名字
+    /**
+     * 应用的名字
+     */
+    private String appName;
 
     // @Value("${test.domainAddress}")
     // private String domainAddress;// 域名地址
     // @Value("domainAddress")
-    private String domainAddress;// 域名地址
+    /**
+     * 域名地址
+     */
+    private String domainAddress;
 
-
-    private String filePath;// 上传文件所存放的位置
+    /**
+     * 上传文件所存放的位置
+     */
+    private String filePath;
 
 
     public String getFilePath() {

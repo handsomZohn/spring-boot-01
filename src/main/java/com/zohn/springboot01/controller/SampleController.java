@@ -10,6 +10,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.zohn.springboot01.domain.User;
 
+/**
+ * @author Administrator 
+ */
 @RestController
 public class SampleController {
 

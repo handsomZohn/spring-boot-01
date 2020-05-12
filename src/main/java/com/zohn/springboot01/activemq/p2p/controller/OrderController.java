@@ -73,7 +73,7 @@ public class OrderController {
      * @Return java.lang.Object
      */
     @GetMapping("/gwxxDX")
-    public Object gwxxDX(@RequestBody Gwxx gwxx){
+    public Object gwxxDataExchange(@RequestBody Gwxx gwxx){
         // 生成消息队列
         Destination destination = new ActiveMQQueue("gwxx.queue");
         // iProcedureService.sendMessage(gwxx, destination);
@@ -97,7 +97,7 @@ public class OrderController {
      * @Return java.lang.Object
      */
     @GetMapping("/gwxxDXList")
-    public Object gwxxDXList(@RequestBody Gwxx gwxx){
+    public Object gwxxDataExchangeList(@RequestBody Gwxx gwxx){
 
         // 生成mq
         Destination destination = new ActiveMQQueue("gwxx.queue.list");

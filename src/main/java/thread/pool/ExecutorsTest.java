@@ -23,7 +23,8 @@ public class ExecutorsTest {
 
     private static ThreadPoolTaskExecutor buildThreadPoolTaskExecutor(){
         ThreadPoolTaskExecutor threadPoolTaskExecutor = new ThreadPoolTaskExecutor();
-        threadPoolTaskExecutor.setThreadNamePrefix("Tarim");// 塔里木
+        // 塔里木
+        threadPoolTaskExecutor.setThreadNamePrefix("Tarim");
         threadPoolTaskExecutor.setCorePoolSize(5);
         threadPoolTaskExecutor.setMaxPoolSize(10);
         threadPoolTaskExecutor.setQueueCapacity(1000);
