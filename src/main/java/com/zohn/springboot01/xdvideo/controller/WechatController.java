@@ -38,7 +38,7 @@ public class WechatController {
         String callbackurl = URLEncoder.encode(redirectUrl, "UTF-8");
 
         // 获取生成二维码地址返回的地址肯定包含微信的域名
-        String qrcodeUrl = String.format(weChatConfig.getOpenQrcodeUrl(), weChatConfig.getOpenAppid(), callbackurl, accessPage);
+        String qrcodeUrl = String.format(WeChatConfig.getOpenQrcodeUrl(), weChatConfig.getOpenAppid(), callbackurl, accessPage);
 
         return JsonData.buildSuccess(qrcodeUrl);
     }
@@ -53,7 +53,7 @@ public class WechatController {
         String callbackurl = URLEncoder.encode(redirectUrl, "UTF-8");
 
         // 获取生成二维码地址返回的地址肯定包含微信的域名
-        String qrcodeUrl = String.format(weChatConfig.getOpenQrcodeUrl(), weChatConfig.getOpenAppid(), callbackurl, accessPage);
+        String qrcodeUrl = String.format(WeChatConfig.getOpenQrcodeUrl(), weChatConfig.getOpenAppid(), callbackurl, accessPage);
 
         return "redirect:qrcodeUrl";
     }
