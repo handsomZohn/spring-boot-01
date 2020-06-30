@@ -5,7 +5,7 @@ import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
 /**
- * @Description: Spring-boot2.x之前的旧版本 继承WebMvcConfigurerAdapter
+ * @Description:  2.x之前的旧版本== Spring-boot2.x之前的旧版本 继承WebMvcConfigurerAdapter
  * @Author: zohn
  * @CreateDate: 2019/1/5 10:06
  * @UpdateUser: zohn

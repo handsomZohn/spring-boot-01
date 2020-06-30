@@ -19,7 +19,7 @@ public class TwoIntercepter implements HandlerInterceptor {
      */
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-        System.out.println("TwoIntercepter==preHandler在调用Controller方法之前");
+        System.out.println("TwoIntercepter==preHandlerBeforeControllerMethod");
         String token = request.getParameter("access_token");
         /*if ("0X3FC".equals(token)) {
             response.getWriter().print("success");
@@ -31,11 +31,11 @@ public class TwoIntercepter implements HandlerInterceptor {
 
     @Override
     public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) throws Exception {
-        System.out.println("TwoIntercepter==postHandler在调用Controller方法之后");
+        System.out.println("TwoIntercepter==postHandlerAfterControllerMethod");
     }
 
     @Override
     public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex) throws Exception {
-        System.out.println("TwoIntercepter==afterCompletion是什么情况下都会被调用的方法");
+        System.out.println("TwoIntercepter==afterCompletionInAnyCase");
     }
 }

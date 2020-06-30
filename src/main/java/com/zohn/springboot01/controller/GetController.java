@@ -7,14 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import com.zohn.springboot01.domain.ServerSetting;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestHeader;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.zohn.springboot01.domain.User;
 
@@ -183,4 +176,10 @@ public class GetController {
         return params;
     }
 
+    @PostMapping("api2/v1/account02")
+    public Object account02 () {
+        params.put("money", 1000);
+        System.out.println("GetController's API is:api2/v1/account02");
+        return params;
+    }
 }
