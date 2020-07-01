@@ -202,7 +202,8 @@ public class URLHttpOrHttpsInterceptor implements HandlerInterceptor {
 
         StringBuilder builder = new StringBuilder(1024);
         //
-        builder.append("((https|http|ftp|rtsp|mms)?://)");
+        builder.append("(((https|http|ftp|rtsp|mms)?://)");
+        builder.append("?");
         // ftp的user@
         builder.append("(([0-9a-z_!~*'().&=+$%-]+: )?[0-9a-z_!~*'().&=+$%-]+@)?");
         // ----域名开始
@@ -225,18 +226,24 @@ public class URLHttpOrHttpsInterceptor implements HandlerInterceptor {
         builder.append("(/?)");
         builder.append("|");
         builder.append("(/[0-9a-z_!~*'().;?:@&=+$,%#-]+)+/?");
-        builder.append(")");
+        builder.append("))(?!.*.jpg.jpg)");
 
         String gsjj = "公司网址，www.baidu.com,请访问查看详情";
 
         String reg = builder.toString();
 
-        String url = "汉字https://www.baidu.com汉字";
+        String url = "sadfasdfasdfdsaf.jpg.jpg";
         String url02 = "18310834045@163.com";
 
-        boolean b = Pattern.compile(reg).matcher(url).find();
 
+        String regex = "^.*?(?<!.jpg.jpg)$";
+
+        boolean b = Pattern.compile(reg).matcher(url).find();
         System.out.println("======^_^======variable b value is : " + b + ", " + " current method and class name is : URLHttpOrHttpsInterceptor.main()");
+
+        boolean b1 = Pattern.compile(regex).matcher(url).find();
+
+        System.out.println("======^_^======variable b1 value is : " + b1 + ", " + " current method and class name is : URLHttpOrHttpsInterceptor.main()");
 
         boolean b02 = Pattern.compile(reg).matcher(url02).find();
         
