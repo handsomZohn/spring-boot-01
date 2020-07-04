@@ -1,8 +1,8 @@
-package com.zohn.springboot01.mybatisStarter.service.impl;
+package com.zohn.springboot01.mybatisstarter.service.impl;
 
-import com.zohn.springboot01.mybatisStarter.domain.User;
-import com.zohn.springboot01.mybatisStarter.mapper.UserMapper;
-import com.zohn.springboot01.mybatisStarter.service.UserService;
+import com.zohn.springboot01.mybatisstarter.domain.User;
+import com.zohn.springboot01.mybatisstarter.mapper.UserMapper;
+import com.zohn.springboot01.mybatisstarter.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;

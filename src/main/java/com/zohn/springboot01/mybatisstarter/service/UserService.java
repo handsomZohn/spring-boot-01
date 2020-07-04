@@ -1,7 +1,6 @@
-package com.zohn.springboot01.mybatisStarter.service;
+package com.zohn.springboot01.mybatisstarter.service;
 
-import com.zohn.springboot01.mybatisStarter.domain.User;
-import org.springframework.stereotype.Service;
+import com.zohn.springboot01.mybatisstarter.domain.User;
 
 /**
  * @Description: user业务接口

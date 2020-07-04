@@ -1,4 +1,4 @@
-package com.zohn.springboot01.mybatisStarter.domain;
+package com.zohn.springboot01.mybatisstarter.domain;
 
 import lombok.Data;
 
@@ -63,6 +63,7 @@ public class JsonData implements Serializable {
 
     /**
      * 失败 传入数据
+     * @param msg
      * @param msg
      * @return
      */
