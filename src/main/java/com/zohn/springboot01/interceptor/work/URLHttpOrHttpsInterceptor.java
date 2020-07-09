@@ -236,7 +236,7 @@ public class URLHttpOrHttpsInterceptor implements HandlerInterceptor {
         String url02 = "18310834045@163.com";
 
         // 有这种的不过滤
-        String regex = "^.*?(?<!.jpg.jpg)$";
+        String regex = "^.*?(?<!.webp|.baibmp|.pcx|.dutif|.gif|.jpeg|.tga|.exif|.fpx|.svg|.psd|.cdr|.pcd|.dxf|.ufo|.eps|.ai|.png|.hdri|.raw|.wmf|.flic|.emf|.ico|.jpg)$";
 
         boolean b = Pattern.compile(reg).matcher(url).find();
         System.out.println("======^_^======variable b value is : " + b + ", " + " current method and class name is : URLHttpOrHttpsInterceptor.main()");
