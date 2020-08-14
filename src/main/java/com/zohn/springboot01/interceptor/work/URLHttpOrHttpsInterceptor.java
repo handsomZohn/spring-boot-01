@@ -233,7 +233,7 @@ public class URLHttpOrHttpsInterceptor implements HandlerInterceptor {
         String reg = builder.toString();
 
         String url = "sadfasdfasdfdsaf.jpg.jpg";
-        String url02 = "18310834045@163.com";
+        String url02 = "GyzrcGr_And_1.0.8.200522_R";
 
         // 有这种的不过滤
         String regex = "^.*?(?<!.webp|.baibmp|.pcx|.dutif|.gif|.jpeg|.tga|.exif|.fpx|.svg|.psd|.cdr|.pcd|.dxf|.ufo|.eps|.ai|.png|.hdri|.raw|.wmf|.flic|.emf|.ico|.jpg)$";

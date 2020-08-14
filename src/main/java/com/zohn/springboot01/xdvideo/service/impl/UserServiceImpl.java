@@ -11,6 +11,12 @@ import org.springframework.stereotype.Service;
 import java.io.UnsupportedEncodingException;
 import java.util.Map;
 
+/**
+ *@Description  
+ *@CreateDate 2020\8\14 0014 16:53
+ *@Author z
+ *@Version 1.0
+ */
 @Service("com.zohn.springboot01.xdvideo.service.impl.UserServiceImpl")
 public class UserServiceImpl implements UserService {
 

@@ -8,7 +8,7 @@ import org.springframework.context.annotation.PropertySource;
  * @Description 微信配置类
  * @Author zohn
  * @Date 2020/2/1 11:01
- * @Param 
+ * @Param
  * @Return
  */
 @Configuration
@@ -48,7 +48,7 @@ public class WeChatConfig {
     /**
      * 获取微信开放平台二维码连接
      */
-    private final static String OPEN_QRCODE_URL= "https://open.weixin.qq.com/connect/qrconnect?appid=%s&redirect_uri=%s&response_type=code&scope=snsapi_login&state=%s#wechat_redirect";
+    private final static String OPEN_QRCODE_URL = "https://open.weixin.qq.com/connect/qrconnect?appid=%s&redirect_uri=%s&response_type=code&scope=snsapi_login&state=%s#wechat_redirect";
 
     /**
      * 开放平台获取access_token地址
@@ -58,7 +58,7 @@ public class WeChatConfig {
     /**
      * 获取用户信息地址
      */
-    private final static String OPEN_USER_INFO_URL ="https://api.weixin.qq.com/sns/userinfo?access_token=%s&openid=%s";
+    private final static String OPEN_USER_INFO_URL = "https://api.weixin.qq.com/sns/userinfo?access_token=%s&openid=%s";
 
     public String getAppId() {
         return appId;

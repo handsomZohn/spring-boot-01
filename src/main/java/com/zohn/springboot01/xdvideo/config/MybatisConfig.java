@@ -12,18 +12,18 @@ import java.util.Properties;
  * @Description Mybatis配置类
  * @Author zohn
  * @Date 2020/2/1 11:01
- * @Param 
+ * @Param
  * @Return
  */
 @Configuration
 public class MybatisConfig {
     @Bean
-    public PageHelper pageHelper(){
+    public PageHelper pageHelper() {
         PageHelper pageHelper = new PageHelper();
         Properties p = new Properties();
-        p.setProperty("offsetAsPageNum","true");
-        p.setProperty("rowBoundsWithCount","true");
-        p.setProperty("reasonable","true");
+        p.setProperty("offsetAsPageNum", "true");
+        p.setProperty("rowBoundsWithCount", "true");
+        p.setProperty("reasonable", "true");
         pageHelper.setProperties(p);
         return pageHelper;
     }

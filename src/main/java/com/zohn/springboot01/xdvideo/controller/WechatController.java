@@ -38,6 +38,7 @@ public class WechatController {
         String callbackurl = URLEncoder.encode(redirectUrl, "UTF-8");
 
         // 获取生成二维码地址返回的地址肯定包含微信的域名
+        // 用String.format方法把，OpenQrcodeUrl中的%s被全部替换掉
         String qrcodeUrl = String.format(WeChatConfig.getOpenQrcodeUrl(), weChatConfig.getOpenAppid(), callbackurl, accessPage);
 
         return JsonData.buildSuccess(qrcodeUrl);

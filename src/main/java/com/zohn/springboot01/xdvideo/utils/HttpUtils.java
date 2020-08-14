@@ -37,13 +37,17 @@ public class HttpUtils {
 
         CloseableHttpClient httpClient = HttpClients.createDefault();
 
-        RequestConfig requestConfig = RequestConfig.custom().setConnectTimeout(5000)// 连接超时
-                .setConnectionRequestTimeout(5000)// 请求超时
-                .setSocketTimeout(5000)//
-                .setRedirectsEnabled(true)// 允许重定向
+        // 连接超时
+        RequestConfig requestConfig = RequestConfig.custom().setConnectTimeout(5000)
+                // 请求超时
+                .setConnectionRequestTimeout(5000)
+                .setSocketTimeout(5000)
+                // 允许重定向
+                .setRedirectsEnabled(true)
                 .build();
 
         HttpGet httpGet = new HttpGet(url);
+        // 设置config属性
         httpGet.setConfig(requestConfig);
 
         try {
@@ -54,7 +58,9 @@ public class HttpUtils {
                 map = gson.fromJson(jsonResult, map.getClass());
             }
         } catch (Exception  e) {
-            e.printStackTrace();// 打印堆栈信息 高并发环境下不推荐打印 如果不差这点资源就可以打印。
+            // 打印堆栈信息 高并发环境下不推荐打印 如果不差这点资源就可以打印。
+            // 要求高性能的场景，不要打印堆栈异常信息
+            e.printStackTrace();
             e.getMessage();
         } finally {
             try {
@@ -90,7 +96,7 @@ public class HttpUtils {
 
         // 使用字符串传参
         if (data != null && data instanceof String){
-            StringEntity stringEntity = new StringEntity(data.toString(), "UTF-8");
+            StringEntity stringEntity = new StringEntity(data, "UTF-8");
             httpPost.setEntity(stringEntity);
         }
 
@@ -98,7 +104,8 @@ public class HttpUtils {
         try {
             CloseableHttpResponse httpResponse = httpClient.execute(httpPost);
             HttpEntity entity = httpResponse.getEntity();
-            if (httpResponse.getStatusLine().getStatusCode() == 200){
+            int statusCode = 200;
+            if (httpResponse.getStatusLine().getStatusCode() == statusCode){
                 String result = EntityUtils.toString(entity);
                 return result;
             }
