@@ -3,6 +3,7 @@ package com.zohn.springboot01.xdvideo.service.impl;
 
 import com.zohn.springboot01.xdvideo.config.WeChatConfig;
 import com.zohn.springboot01.xdvideo.domain.User;
+import com.zohn.springboot01.xdvideo.mapper.UserMapper;
 import com.zohn.springboot01.xdvideo.service.UserService;
 import com.zohn.springboot01.xdvideo.utils.HttpUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +24,9 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private WeChatConfig weChatConfig;
 
+    @Autowired
+    private UserMapper userMapper;
+
     /**
      * @Description 保存用户信息
      * @Author zohn
@@ -39,6 +43,16 @@ public class UserServiceImpl implements UserService {
 
         if(baseMap == null && baseMap.isEmpty()) {
             return null;
+        }
+
+        String accessToken = (String)baseMap.get("access_token");
+        String openId  = (String) baseMap.get("openid");
+
+        User dbUser = userMapper.findByopenid(openId);
+
+        //更新用户，直接返回
+        if(dbUser!=null) {
+            return dbUser;
         }
 
 
