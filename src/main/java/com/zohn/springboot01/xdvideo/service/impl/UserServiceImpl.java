@@ -1,9 +1,10 @@
 package com.zohn.springboot01.xdvideo.service.impl;
 
 
+import com.zohn.springboot01.mybatisstarter.mapper.UserMapper;
+import com.zohn.springboot01.mybatisstarter.mapper.UserMapperForWechatLogin;
 import com.zohn.springboot01.xdvideo.config.WeChatConfig;
 import com.zohn.springboot01.xdvideo.domain.User;
-import com.zohn.springboot01.xdvideo.mapper.UserMapper;
 import com.zohn.springboot01.xdvideo.service.UserService;
 import com.zohn.springboot01.xdvideo.utils.HttpUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,7 +26,7 @@ public class UserServiceImpl implements UserService {
     private WeChatConfig weChatConfig;
 
     @Autowired
-    private UserMapper userMapper;
+    private UserMapperForWechatLogin userMapper;
 
     /**
      * @Description 保存用户信息

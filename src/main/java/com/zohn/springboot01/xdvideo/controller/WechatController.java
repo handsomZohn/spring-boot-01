@@ -2,6 +2,9 @@ package com.zohn.springboot01.xdvideo.controller;
 
 import com.zohn.springboot01.xdvideo.config.WeChatConfig;
 import com.zohn.springboot01.xdvideo.domain.JsonData;
+import com.zohn.springboot01.xdvideo.domain.User;
+import com.zohn.springboot01.xdvideo.service.UserService;
+import com.zohn.springboot01.xdvideo.utils.JwtUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 
@@ -19,6 +23,9 @@ public class WechatController {
 
     @Autowired
     private WeChatConfig weChatConfig;
+
+    @Autowired
+    private UserService userService;
 
     /**
      * @Description 拼装微信扫一扫登录URL
@@ -67,11 +74,13 @@ public class WechatController {
      * @Return void
      */
     @GetMapping("/user/callback")
-    public void wechatUserCallBack(@RequestParam(value = "code", required = true) String code, String state, HttpServletResponse response) {
-        System.out.println("======^_^======变量code值为: " + code + ", 变量state值为: " + state + ", 当前类以及方法名字是: WechatController.wechatUserCallBack()");
-        // 默认成功吧
-
-        // 通过code获取access_token
-
+    public void wechatUserCallBack(@RequestParam(value = "code", required = true) String code, String state, HttpServletResponse response) throws IOException {
+        User user = userService.saveWechatUser(code);
+        if (user != null) {
+            //生成jwt
+            String token = JwtUtils.geneJsonWebToken(user);
+            // state 当前用户的页面地址，需要拼接 http://  这样才不会站内跳转
+            response.sendRedirect(state + "?token=" + token + "&head_img=" + user.getHeadImg() + "&name=" + URLEncoder.encode(user.getName(), "UTF-8"));
+        }
     }
 }
