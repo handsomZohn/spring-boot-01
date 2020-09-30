@@ -25,7 +25,7 @@ public interface UserMapper {
 
 
     /**
-     * 保存用户新
+     * 保存用户信息
      * @param user
      * @return
      */

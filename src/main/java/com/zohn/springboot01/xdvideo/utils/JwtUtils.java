@@ -18,7 +18,10 @@ public class JwtUtils {
 
     public static final String SUBJECT = "xdclass";
 
-    public static final Long EXPIRE = 1000L * 60 * 60 * 24 * 7;// 过期时间
+    /**
+     * 过期时间
+     */
+    public static final Long EXPIRE = 1000L * 60 * 60 * 24 * 7;
 
     public static final String APPSECRET = "xd20200202";
 
@@ -30,7 +33,9 @@ public class JwtUtils {
      * @Return java.lang.String
      */
     public static String geneJsonWebToken(User user){
-        if (user == null || com.zohn.springboot01.xdvideo.utils.StringHelper.isEmpty(user.getId() + "") || com.zohn.springboot01.xdvideo.utils.StringHelper.isEmpty(user.getName()) || com.zohn.springboot01.xdvideo.utils.StringHelper.isEmpty(user.getHeadImg())){
+        if (user == null || com.zohn.springboot01.xdvideo.utils.StringHelper.isEmpty(user.getId() + "")
+                || com.zohn.springboot01.xdvideo.utils.StringHelper.isEmpty(user.getName())
+                || com.zohn.springboot01.xdvideo.utils.StringHelper.isEmpty(user.getHeadImg())){
             return null;
         }
 

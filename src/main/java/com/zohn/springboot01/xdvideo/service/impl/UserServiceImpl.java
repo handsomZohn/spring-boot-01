@@ -71,14 +71,21 @@ public class UserServiceImpl implements UserService {
             return null;
         }
 
-        // 拆解
+        /**
+         * 拆解用户信息
+         */
+        // 昵称
         String nickName = (String) userBaseMap.get("nickname");
-        // String sex = (String) userBaseMap.get("sex");
+        // 性别
         Double sexTemp = (Double) userBaseMap.get("sex");
         int sex = sexTemp.intValue();
+        // 省
         String province = (String) userBaseMap.get("province");
+        // 市
         String city = (String) userBaseMap.get("city");
+        // 区
         String country = (String) userBaseMap.get("country");
+        // 头像图片地址
         String headimgurl = (String) userBaseMap.get("headimgurl");
 
         StringBuilder stringBuilder = new StringBuilder(country).append("||");
