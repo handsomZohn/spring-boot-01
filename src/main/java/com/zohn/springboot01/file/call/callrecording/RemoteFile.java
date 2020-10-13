@@ -1,4 +1,4 @@
-package com.zohn.springboot01.file;
+package com.zohn.springboot01.file.call.callrecording;
 
 import java.io.*;
 import java.net.HttpURLConnection;
@@ -86,8 +86,6 @@ public class RemoteFile {
             e.printStackTrace();
             throw new  Exception(e.getMessage());
         }
-
         return savePath;
-
     }
 }
