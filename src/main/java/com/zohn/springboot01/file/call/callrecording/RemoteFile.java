@@ -17,7 +17,9 @@ public class RemoteFile {
         String url = "https://guiyu-java-bss-alls.oss-cn-hangzhou.aliyuncs.com/fed67e961ad741539776ea8789576d431314408595303583744.wav";
         String filePath = "E:/";
         String method = "GET";
-        saveUrlAs(url, filePath, method);
+        // saveUrlAs(url, filePath, method);
+        String fileName = url.substring(url.lastIndexOf("/") + 1);
+        System.out.println("======^_^======variable fileName value is : " + fileName + ", " + " current method and class name is : RemoteFile.main()");
     }
 
     /**
