@@ -44,10 +44,10 @@
             <artifactId>spring-boot-starter-thymeleaf</artifactId>
         </dependency>
 
-       <!-- <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-mybatisplus</artifactId>
-        </dependency>-->
+        <!-- <dependency>
+             <groupId>org.springframework.boot</groupId>
+             <artifactId>spring-boot-starter-mybatisplus</artifactId>
+         </dependency>-->
 
         <!--freemarker template language-->
         <dependency>
@@ -221,6 +221,8 @@
             <artifactId>commons-io</artifactId>
             <version>2.6</version>
         </dependency>
+
+        <!--junit测试包-->
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter</artifactId>
@@ -229,6 +231,12 @@
         </dependency>
 
 
+        <!--hutool 引入糊涂工具包，测试雪花算法-->
+        <dependency>
+            <groupId>cn.hutool</groupId>
+            <artifactId>hutool-all</artifactId>
+            <version>5.4.3</version>
+        </dependency>
     </dependencies>
 
     <!--打包依赖-->
