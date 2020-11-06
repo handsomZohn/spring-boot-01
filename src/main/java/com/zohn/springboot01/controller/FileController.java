@@ -36,7 +36,7 @@ public class FileController {
      * 绝对路径 指的是物理机磁盘路径
      */
     @Value("${web.image_path}")
-    private static String absoluteFilePath;
+    private String absoluteFilePath;
 
     @Autowired
     private ServerSetting serverSetting;
