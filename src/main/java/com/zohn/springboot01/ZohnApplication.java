@@ -34,7 +34,7 @@ import javax.servlet.annotation.MultipartConfig;
 @MapperScan("com.zohn.springboot01.mybatisstarter.mapper")
 @EnableScheduling
 @EnableAsync
-// @EnableJms
+@EnableJms
 public class ZohnApplication {
     public static void main(String[] args) {
         SpringApplication.run(ZohnApplication.class, args);
