@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 import javax.annotation.PostConstruct;
 
 
-@Component
+// @Component
 public class MsgProducer {
     /**
      * 生产者的组名

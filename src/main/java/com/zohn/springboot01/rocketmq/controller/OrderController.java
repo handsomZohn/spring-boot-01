@@ -16,8 +16,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.io.UnsupportedEncodingException;
 
-@RestController("com.zohn.springboot01.rocketmq.controller.OrderController")
-@RequestMapping("/api/v1/rq")
+// @RestController("com.zohn.springboot01.rocketmq.controller.OrderController")
+// @RequestMapping("/api/v1/rq")
 public class OrderController {
     @Autowired
     private MsgProducer msgProducer;
