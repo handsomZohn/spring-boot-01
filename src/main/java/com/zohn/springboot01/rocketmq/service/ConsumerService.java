@@ -24,6 +24,7 @@ public class ConsumerService {
         consumer.setNamesrvAddr(namesrvAddr);
         try {
             consumer.subscribe("testTopic", "push");
+            consumer.subscribe("commentTopic", "push");
 
             // 如果是第一次启动，从队列头部开始消费
             // 如果不是第一次启动，从上次消费的位置继续消费
