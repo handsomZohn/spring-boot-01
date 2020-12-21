@@ -12,7 +12,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 /**
  * @Description: spring-boot整合redis
@@ -60,6 +62,30 @@ public class RedisController {
         String s = redisClient.get("redis:user:12");
         User user = JsonUtils.string2Obj(s, User.class);
         return JsonData.buildSuccess(user);
+    }
+
+    @GetMapping("/addUserList")
+    @ResponseBody
+    public Object addUserList() {
+        User user = new User("zhangwuji", "abc", "12", "18310834045", new Date());
+        User user02 = new User("zhangwuji", "abc", "12", "18310834045", new Date());
+        User user03 = new User("zhangwuji", "abc", "12", "18310834045", new Date());
+        List<User> userList = new ArrayList(){{
+            add(user);
+            add(user02);
+            add(user03);
+        }};
+        String s = JsonUtils.obj2String(userList);
+        boolean flag = redisClient.set("redis:user:list", s);
+        return JsonData.buildSuccess(flag);
+    }
+
+    @GetMapping("/getUserList")
+    @ResponseBody
+    public Object getUserList(){
+        String s = redisClient.get("redis:user:list");
+        ArrayList<User> userList = JsonUtils.string2Obj(s, ArrayList.class);
+        return JsonData.buildSuccess(userList);
     }
 
 }
