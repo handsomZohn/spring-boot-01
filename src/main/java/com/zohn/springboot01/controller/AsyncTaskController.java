@@ -1,6 +1,6 @@
 package com.zohn.springboot01.controller;
 
-import com.zohn.springboot01.asynctask.AsyncTask;
+import com.zohn.springboot01.asynctimetask.asynctask.AsyncTask;
 import com.zohn.springboot01.domain.JsonData;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
