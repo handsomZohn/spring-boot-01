@@ -12,9 +12,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 /**
  * @Description: spring-boot整合redis
@@ -88,4 +87,48 @@ public class RedisController {
         return JsonData.buildSuccess(userList);
     }
 
+
+}
+
+/**
+ * 　　　┏┓　　　┏┓
+ * 　　┏┛┻━━━┛┻┓
+ * 　　┃　　　　　 ┃
+ * 　　┃　　　━　　┃
+ * 　　┃　┳┛　┗┳　 ┃
+ * 　　┃　　　　　 ┃
+ * 　　┃　　　┻　　┃
+ * 　　┃　　　　　 ┃
+ * 　　┗━┓　　　┏━┛
+ * 　　　　┃　　　┃ 神兽保佑
+ * 　　　　┃　　　┃ 代码无BUG！
+ * 　　　　┃　　　┗━━━┓
+ * 　　　　┃　　　　　　┣┓
+ * 　　　　┃　　　　　　┏┛
+ * 　　　　┗┓┓┏━┳┓┏┛
+ * 　　　　　┃┫┫　┃┫┫
+ * 　　　　　┗┻┛　┗┻┛
+ * 实现一个 Java 版的 LRU
+ * Created by zz on 2021\1\7 0007.
+ */
+class LRUCache<K,V> extends LinkedHashMap<K,V> {
+    private int CACHE_SIZE;
+    /**
+     * 传递进来能缓存多少数据
+     * @param cacheSize 缓存大小
+     */
+    public LRUCache(int cacheSize){
+        // true表示让linkedHashMap按照访问顺序来排序，最近访问的排在头部，最先（老）访问的排在尾部
+        super((int)Math.ceil(cacheSize/0.75) + 1, 0.75f,true);
+        CACHE_SIZE = cacheSize;
+    }
+
+    @Override
+    protected boolean removeEldestEntry(Map.Entry<K,V> eldest){
+        // 当map中的数据量大于指定的缓存的个数的时候，就自动删除最老的数据
+        return size() > CACHE_SIZE;
+    }
+    public static void main(String[] args) {
+        System.out.println(2>>>3);
+    }
 }
