@@ -6,6 +6,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.amqp.rabbit.support.CorrelationData;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 /**
  * @Description 消息的生产者
@@ -13,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
  * @Author z
  * @Version 1.0
  */
+@Component
 public class RabbitMQMsgProducer implements RabbitTemplate.ConfirmCallback {
 
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
@@ -34,8 +36,14 @@ public class RabbitMQMsgProducer implements RabbitTemplate.ConfirmCallback {
 
     public void sendMsg(String content) {
         CorrelationData correlationId = new CorrelationData(UUID.randomUUID().toString());
-        // 把消息放入ROUTINGKEY_A对应的队列当中去，对应的是队列A
+        // 把消息放入 ROUTINGKEY_A 对应的队列当中去，对应的是队列A
         rabbitTemplate.convertAndSend(RabbitMQConfig.EXCHANGE_A, RabbitMQConfig.ROUTINGKEY_A, content, correlationId);
+
+    }
+
+    public void sendMsgToQueueB(String content) {
+        CorrelationData correlationData = new CorrelationData(UUID.randomUUID().toString());
+        rabbitTemplate.convertAndSend(RabbitMQConfig.EXCHANGE_B, RabbitMQConfig.ROUTINGKEY_B, content,correlationData);
     }
 
     @Override

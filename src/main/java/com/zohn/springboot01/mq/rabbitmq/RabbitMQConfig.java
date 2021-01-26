@@ -2,6 +2,10 @@ package com.zohn.springboot01.mq.rabbitmq;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.amqp.core.Binding;
+import org.springframework.amqp.core.BindingBuilder;
+import org.springframework.amqp.core.DirectExchange;
+import org.springframework.amqp.core.Queue;
 import org.springframework.amqp.rabbit.connection.CachingConnectionFactory;
 import org.springframework.amqp.rabbit.connection.ConnectionFactory;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
@@ -78,5 +82,43 @@ public class RabbitMQConfig {
     public RabbitTemplate rabbitTemplate() {
         RabbitTemplate rabbitTemplate = new RabbitTemplate(connectionFactory());
         return rabbitTemplate;
+    }
+
+    /**
+     * @Description 把交换机，队列通过路由关键字进行绑定，针对消费者配置 1.设置交换机 2.将队列绑定到交换机
+     * @Author z
+     * @Date 2021\1\26 0026 10:36
+     * @Param []
+     * @Return org.springframework.amqp.core.DirectExchange
+     */
+    @Bean
+    public DirectExchange defaultExchange() {
+        return new DirectExchange(EXCHANGE_A);
+    }
+
+    @Bean
+    public Queue queueA() {
+        // durable 耐用 持久化
+        return new Queue(QUEUE_A, true);
+    }
+
+    @Bean
+    public Binding binding() {
+        return BindingBuilder.bind(queueA()).to(defaultExchange()).with(RabbitMQConfig.ROUTINGKEY_A);
+    }
+
+    @Bean
+    public DirectExchange defaultExchangeB() {
+        return new DirectExchange(EXCHANGE_B);
+    }
+    @Bean
+    public Queue queueB() {
+        // durable 耐用 持久化
+        return new Queue(QUEUE_B, true);
+    }
+
+    @Bean
+    public Binding bindingB() {
+        return BindingBuilder.bind(queueB()).to(defaultExchangeB()).with(RabbitMQConfig.ROUTINGKEY_B);
     }
 }
