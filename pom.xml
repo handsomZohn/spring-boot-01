@@ -251,6 +251,42 @@
             <version>1.5.2.RELEASE</version>
         </dependency>
 
+
+
+        <!-- 实现对数据库连接池的自动化配置 -->
+        <!--<dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-jdbc</artifactId>
+        </dependency>-->
+
+
+        <!-- 实现对 MyBatis Plus 的自动化配置 同时导入mybatis和mybatisplus的依赖会使项目报错起不起来 -->
+        <!--<dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus-boot-starter</artifactId>
+            <version>3.2.0</version>
+        </dependency>-->
+
+        <!-- 方便用单元测试验证-->
+        <!--<dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-test</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-test</artifactId>
+        </dependency>-->
+        <!--同时导入mybatis和mybatisplus的依赖会使项目报错起不起来-->
+
     </dependencies>
 
     <!--打包依赖-->
