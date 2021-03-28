@@ -1,0 +1,65 @@
+端口27017
+sql:
+关系型数据库的表是存储一些结构化的数据
+每条记录的字段的组成都是一样的
+即便不是每条记录都需要所有的字段
+但是数据库会为每条数据分配所有的字段 ##意思就是就算空着也要分配 这样就占用了一部分表空间
+nosql:
+key-value 存储
+结构不固定
+每条记录的键不一样
+每条记录可以增加自己的键值对
+不局限于固定的结构
+减少空间的开销
+
+
+##mongodb一些常用命令
+##操作库的命令
+show dbs --显示所有的数据库
+use databaseName --进入指定的数据库
+db.dropDatabse() --这个命令是要自杀的节奏啊   进入数据库之后 删除当前库 有点狠
+db.stats() --查看当前数据库的状态
+
+##操作文档和集合的命令
+show collections（）  --显示所有的集合
+
+##查询操作
+db.user.find();--查询集合中的所有的数据
+db.user.findOne();--查询指定集合的第一条记录
+db.user.findOne({user_id:{$gt:1001}});--查询指定集合中满足条件的任意一条记录（随机性）
+db.user.find({user_id:1001});--查询集合中user_id=1001的字段
+db.user.find({user_id:{$gt:1001}});--查询集合中满足条件(user_id>1001)的所有记录 请与上上条比较记忆 返回一个与返回一堆的问题
+db.user.find({user_name:{$regex:"李"}});--查询user_name中包含"李"字的所有记录
+db.user.find().limit(5);--返回前5条记录
+db.user.find().skip(5);--返回第5条之后的所有的记录
+db.user.find().limit(10).skip(5);--返回第5条至第10条之间的记录
+db.user.find().count();--查询集合中所有记录数
+db.user.find({user_id:1001}).count();--查询数据表中【符合条件的记录数】
+db.user.find({$where:"this.user_id > 7"});--按照条件查询
+db.user.find({user_id:{$in:[4,6,7,8]}});--类似SQL中in语法
+##游标
+for(var c=db.user.find();c.hasNext();){print(c.next().user_id);}--循环输出符合条件的记录内容
+db.user.find().forEach(function(user){printjson(user)});--循环输入符合条件的记录内容
+##索引
+db.user.ensureIndex({user_id:1});--指定某个字段为索引字段 1为升序
+db.user.ensureIndex({user_id:1,user_name:-1});--指定多个字段为索引字段 -1为倒序
+db.user.ensureIndex({user_id:1,user_name:-1},{unique:true});--设置索引的字段内容唯一不可重复
+db.user.getIndexes();--查看指定集合现有索引
+db.user.dropIndex({user_id:1});--删除指定索引
+##排序
+db.user.find().sort({user_id:1});--查询结果按照指定的字段升序排序
+db.user.find().sort({user_id:-1});--查询结果按照指定的字段降序排序
+##插入
+db.user.insert({user_id:1001});--指定集合插入一条数据
+for(i=0;i<n;i++)db.user.insert({user_id:i});--指定集合插入n条数据
+##修改
+db.user.update({user_id:8},{$set:{username:"zhangsan"}});--修改第一个是条件，第二个是修改的内容   [修改user_id为8的记录的username为"zhangsan"]
+db.user.update({user_id:8},{$set:{username:"zhangsan"}},true);--true的含义表示是，如果没有相应的记录那就新建一条
+db.user.update({user_id:8},{$set:{username:"zhangsan"}},true,true);--第二个true的含义是更新所有符合条件的记录(默认false)
+##删除
+db.user.remove({user_id:{$gt:1001}});--删除符合条件的记录
+db.user.drop();--删除指定的数据表
+
+
+
+

@@ -1,0 +1,81 @@
+端口6379
+##切换数据库
+默认有16个数据库 下表从0开始 切换库用select 比如切换到最后一个库 用 select 15
+
+##数据类型和常用命令
+
+#string类型
+set name zhangsan 
+get name 控制台打印"zhangsan"
+
+
+
+
+randomkey 返回任意的一个key 如果没有key的话 那就返回<nil>
+
+##redis和memcached的区别：
+redis拥有更多的数据结构并支持更丰富的数据操作
+在memcached里面需要将数据拿出来然后再set进去 这样会增加网络IO的次数和数据的体积
+在redis中这些复杂的操作就和GET/SET一样高效
+#内存使用效率对比
+简单的使用key-value存储的话，Memcached的内存利用率更高
+而redis采用Hash结构来做key-value存储，由于其组合式的压缩，其内存利用效率高于memcached
+#性能对比
+由于redis只使用单核 而memcached可以使用多核 所以平均每一核上在存储小数据时redis比memcached性能更高
+而在100k以上的数据Memcached的性能要比redis优越
+#数据类型支持不同
+memcached仅支持key-value
+redis支持很多的数据类型：String,Hash,List,Set,Sorted Set
+	String：
+		常用命令set/get/decr/incr/mget
+		应用场景：String是最常用的一种数据类型 普通的key/value都可以归为此类
+		实现方式：String在redis内部存储默认就是字符串 被redisObject所引用 当遇到incr、decr等操作是会转
+		成数值型进行计算此时redisObject的encoding字段为int
+	Hash：
+		常用命令 hget、hset、hgetall
+		应用场景：存储一个对象，ID USERNAME AGE BIRTHDAY 通过id获取username 或者age 或者birthday
+		实现方式：redis的Hash实际是内部存储的value为一个HashMap，并且提供了直接存取这个Map成员的接口，key是
+		属性id value是一个Map Map的key是成员的属性名，value是
+			属性值 对数据的修改和存取可以直接通过内部map的key（redis称内部的map的key为filed）也就是通过key+
+			filed就可以操作对应的属性数据
+			当前HashMap的实现有两种方式
+				1.HashMap成员比较少的时候Redis为了节省内存会采用类似一维数组的方式来紧凑存储 不会采用真正的HashMap
+				  这时对应的value的redisObject的encoding为zipmap
+				2.当成员数量增大时会自动转成HashMap此此时的encoding为ht
+	List：
+		常用命令：lpush、rpush、lpop、rpop、lrange
+		应用场景：Redis list的应用场景非常多，是redis最重要的数据结构之一 Twitter的管注列表和粉丝列表都可以用
+		Redis的List来实现
+		实现方式：Redis list的实现为一个双向链表 可以支持反向查找和遍历 更方便操作 不过带来了额外的内存开销 Redis
+		的内部很多实现 包括发送缓冲队列等也都是用的这个数据结构
+	Set:
+		常用命令：sadd、spop、smemebers、sunion
+		应用场景：Redis set对外提供的功能与list类似是一个列表的功能 特殊之处在于set可以自动排重 当你需要存储列表 
+		又不希望出现重复数据时 set是一个很好的选择 并且 set提供了一个判断元素是否在集合内的接口 这也是list所不能提供的
+		实现方式：set的内部实现是value永远为null的hasmap实际就是通过计算hash的方式来快速排重的 这就是为什么set能判断
+		元素在集合内
+	sorted Set
+		常用命令 ：zadd、zrange、zrem、zcard
+		应用场景：与set类似 区别是set不是自动有序的 而sorted set可以通过用户额外提供一个优先级（score）的参数来为成员排序
+		并且是插入有序的 即自动排序 当你需要一个有序不重复的集合列表 就可以用sorted set 
+		实现方式：Redis sorted set 的内部使用HashMap和跳跃列表（skipList）来保证数据的存储和有序 HashMap里放的成员
+		到score的映射 跳跃表里边存的是所有的成员 排序依据是HashMap里存放的score，使用跳跃表的的结构可以获得比较高的查找效率
+		并且是实现上比较简单
+	
+
+#内存管理机制不同
+在redis中并不是所有的数据一直存储在内存中的 这个是和memcached的最大的区别
+
+#数据持久化支持不同
+redis虽然是基于内存的存储系统 但它本身支持内存数据的持久化 持久化的支持提供两种策略RDB快照和AOF日志 
+而memcached是不支持持久化操作的。
+#集群管理不同
+
+
+#############################################################################################
+网络IO模型
+memcached是多线程 非阻塞IO复用的网络模型 分为兼听主线程和worker子线程
+
+
+
+

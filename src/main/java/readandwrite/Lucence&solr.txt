@@ -1,0 +1,44 @@
+
+##Lucence是一个基于Java的全文信息检索工具包
+不是一个完整的搜索应用程序 而是为你的应用程序提供索引和搜索功能
+Lucene 目前是 Apache Jakarta 家族中的一个开源项目。也是目前最为流行的基于 Java 开源全文检索工具包。
+目前已经有很多应用程序的搜索功能是基于 Lucene 的，比如 Eclipse 的帮助系统的搜索功能。
+Lucence能够为 文本类型 的数据建立索引  所以你只要能把你要索引的数据格式转化为文本，Lucene 就能对你的文档进行索引和搜索    【文本类型】
+举个栗子[大概流程]:
+HTML、PDF ---> 文本类型  ---> Lucence索引  ---> 把索引文件保存的磁盘或者内存 ---> 根据查询条件在索引文件进行查询
+
+##Lucence的主要组件：
+IndexWriter：在文档中加入索引，控制索引过程中参数的使用
+Analyzer：分析器 常见的有StandardAnalyzer、StopAnalyzer WhiteSpaceAnalyzer
+Directory:索引存放的位置 两种 磁盘和内存 一般放在磁盘上 相应的提供两个类 FSDirectory RAMDirectory
+Document：文档 Document相当于一个要进行索引的单元 任何要索引的文件必须转换为Document对象才能进行索引
+Field：字段
+IndexSearcher：是lucene中最基本的检索工具，所有的检索都会用到IndexSearcher工具
+Query：查询 lucene中支持模糊查询，语义查询，短语查询，组合查询等等,如有TermQuery,BooleanQuery,RangeQuery,WildcardQuery等一些类
+QueryParser: 是一个解析用户输入的工具，可以通过扫描用户输入的字符串，生成Query对象
+Hits:在搜索完成之后，需要把搜索结果返回并显示给用户，只有这样才算是完成搜索的目的 在lucene中，搜索的结果的集合是用Hits类的实例来表示的
+##信息检索程序库和搜索引擎并不是一个东西不要混淆
+
+##solr的应用与描述
+solr是一个高性能的采用Java5开发 基于Lucence的全文搜索服务器
+提供比Lucence更为丰富的查询语言 同时实现了可扩展、可配置并且对查询性能进行了优化 提供完善的功能管理界面 是一款非常优秀的全文搜索引擎
+
+##Lucence和solr的区别
+Lucence本质上是搜索库 不是独立的应用程序 solr是独立的应用程序
+Lucence专注于搜索底层的建设 solr是专注于企业应用的程序
+Lucence不负责支撑搜索服务所必需的管理 solr负责支撑搜索服务所必须的管理
+solr是Lucence面向企业搜索的一个应用
+
+solr应用：
+1.在solr索引库里面添加字段
+2.创建solr配置文件和solr服务连接
+3.创建文档对象 solrInputDocument doc = new solrInputDocument（）;
+然后 doc.addField("username","admin");
+   doc.addField("password","admin");
+   把数据添加到索引库
+然后通过solrQuery搜索里面的数据以
+SolrQuery sq = new SolrQuery（）;
+的方式把数据取出来
+可以通过addHighLightField实现数据的高亮显示
+
+#solr端口：8983
