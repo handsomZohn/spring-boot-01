@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <script src="vue.js" type="text/javascript" charset="UTF-8"></script>
+</head>
+<body>
+<div id="zohn">
+    {{name}}
+</div>
+
+<div id="app">
+    {{foo}}
+    <!--这里的foo不会更新-->
+    <button v-on:click="foo='baz'">Change it</button>
+</div>
+
+<div id="example">
+
+</div>
+
+<script type="text/javascript">
+    var data = {"name": "zhangyifeng"};
+    var vm = new Vue({
+        el: "#zohn",
+        data: data
+    });
+
+    // true
+    console.log(vm.name == data.name);
+
+    // 改变vm的属性会影响data的属性
+    vm.name = "zhangjiazhen";
+    console.log("after changed vm.name as 'zhangjiazhen',the value of data.name is: " + data.name);
+
+    // 改变data的属性，同样会影响vm的属性
+    data.name = "lixiaolong";
+    console.log("after changed data.name as 'lixiaolong',the value of vm.name is: " + vm.name);
+</script>
+
+<script type="text/javascript">
+    var obj = {foo: "bar"};
+    Object.freeze(obj);
+    new Vue({
+        el: "#app",
+        data: obj
+    });
+</script>
+
+<script type="text/javascript">
+    var data = {a: 1};
+    var vm = new Vue({
+        el: "#example",
+        data: data
+    })
+
+    // 属性值是一样的
+    console.log(vm.$data === data);
+
+    // 指向的也是同一个DOM元素
+    console.log(vm.$el === document.getElementById("example"));
+
+    // $watch 是一个实例方法
+    vm.$watch('a',function (newVal, oldVal) {
+        console.log(newVal,oldVal);
+    })
+
+    vm.$data.a = 123456;
+
+</script>
+
+</body>
+
+</html>

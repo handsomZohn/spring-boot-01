@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>模板语法-插入值</title>
+    <script src="vue.js" type="text/javascript" charset="utf-8"></script>
+</head>
+
+<body>
+
+<!--v-once表示一次性的插入值 当数据改变的时候 插值处的内容不会被更新-->
+<!--v-html会输出真正的html-->
+<!-- v-bind动态的给html元素绑定属性 -->
+<div id="app" v-once v-html>
+    {{msg}}
+
+    <p>using mustaches {{rawHtml}}</p>
+    <p>using v-html directive: <span v-html="rawHtml"></span></p>
+    <!--p标签中不能有内容 rawHtml中定义的html元素会覆盖掉-->
+    <p v-html="rawHtml">1111</p>
+
+    <!--动态绑定样式-->
+    <!-- 可以用来动态改变某个元素的样式
+    e.g.
+    点击某个元素改变样式，再次点击时，再次改变样式
+    -->
+
+    <div v-bind:class="color"> test.......</div>
+
+    <!-- javascript语法支持 加法运算 三目运算 -->
+    {{number + 1}}
+
+    {{flag ? "disabled" : "enable"}}
+
+    <!-- 比较复杂的函数的运算 -->
+    {{message.split('').reverse().join('')}}
+</div>
+
+<script type="text/javascript">
+    var vm = new Vue({
+        el: "#app",
+        data: {
+            msg: "hi vue!!!!!",
+            rawHtml: '<span style="color: red">this is should be red 001</span>',
+            color: "red",
+            number: 10,
+            flag: true,
+            message: "VUE"
+        }
+    });
+    vm.$data.msg = "hi vue 002";
+
+    // 指定时间后更新值
+    setTimeout(function () {
+        vm.msg = "has changed";
+    }, 3000);
+
+</script>
+
+<style type="text/css">
+    .red {
+        color: red;
+        font-size: 100px;
+    }
+</style>
+</body>
+</html>

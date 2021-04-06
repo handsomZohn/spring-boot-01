@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>class与styles的绑定</title>
+    <script src="vue.js" type="text/javascript" charset="utf-8"></script>
+</head>
+
+<body>
+
+
+<div id="app">
+    <!-- 第一种方式 通过vue参数动态控制 css样式   -->
+    <!--v-bind:class="{active:isActive,green:isGreen}"-->
+
+    <!-- 第二种方式 数据的形式 直接找css了不会通过vue参数动态控制 -->
+    <!-- v-bind:class="['active', 'green']" -->
+
+    <!-- 第三种方式 通过vue参数动态控制 css样式 -->
+    <!-- v-bind:class="[isActive ? 'active' : '', isGreen ? 'green' : '']" -->
+    <div
+            class="test"
+            v-bind:class="[isActive ? 'active' : '', isGreen ? 'green' : '']"
+            style="width: 200px; height: 200px; text-align: center;line-height: 200px;">
+        hi VUE
+    </div>
+
+    <!-- 绑定内联样式 -->
+    <div
+        :style="{color:color, fontSize:size, background : isRed ? '#FF0000' : ''}"
+    >
+        hi VUE
+    </div>
+</div>
+
+<script type="text/javascript">
+    var vm = new Vue({
+        el: "#app",
+        data: {
+            isActive: true,
+            isGreen: true,
+            color : '#FF0000',
+            size:"50px",
+            isRed:false
+        },
+    });
+</script>
+
+<style type="text/css">
+    .active {
+        background-color: red;
+    }
+
+    .test {
+        font-size: 60px;
+    }
+
+    .green {
+        color: #51a7e8;
+    }
+</style>
+</body>
+</html>

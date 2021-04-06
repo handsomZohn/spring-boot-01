@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>view 实例</title>
+		<script src="vue.js" type="text/javascript" charset="UTF-8"></script>
+	</head>
+	<body>
+		<div class="zohn">
+			{{noteBook}}<br/>
+			{{msg}}
+		</div>
+	</body>
+	<script type="text/javascript">
+		var vm = new Vue({
+			// el 表示元素
+			el:".zohn",
+			// data表示数据
+			data:{
+				noteBook:"the value of noteBook",
+				msg:"hello Vue"
+			}
+		});
+	</script>
+</html>

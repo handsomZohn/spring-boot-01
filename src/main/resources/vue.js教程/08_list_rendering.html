@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>列表渲染</title>
+    <script src="vue.js" type="text/javascript" charset="utf-8"></script>
+</head>
+
+<body>
+
+<div id="app">
+    <!-- 通过v-for渲染列表 -->
+    <ul>
+        <li v-for="item,index in items" :key="index">
+            {{index}}XXXXXXXXXXXXXX:::-->   {{item.message}}
+        </li>
+    </ul>
+
+    <!-- 通过v-for遍历对象的属性值 -->
+    <ul>
+        <li v-for="(value,key,index) in object" :key="key">
+            {{key}} --> {{value}} --> {{index}}
+        </li>
+        <!-- 奇怪：这个地方我用的是key，为什么出来的是属性的名称，而不是属性的值呢 -->
+        <!-- 原因：v-for（value key index）用的是这样的顺序 -->
+    </ul>
+</div>
+
+<script type="text/javascript">
+    var vm = new Vue({
+        el: '#app',
+        data: {
+            items: [
+                {message: 'Foo'},
+                {message: 'Bar'}
+            ],
+            object:{
+                title:'How to do this in VUE',
+                author:'Jane Doe',
+                publishedAt:'2016-04-04'
+            }
+        }
+    });
+</script>
+
+<style type="text/css">
+
+</style>
+</body>
+</html>

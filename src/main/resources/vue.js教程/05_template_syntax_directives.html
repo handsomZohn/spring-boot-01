@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>模板语法-指令</title>
+    <script src="vue.js" type="text/javascript" charset="utf-8"></script>
+</head>
+
+<body>
+
+
+<div id="app">
+    <!-- v-if指令 -->
+    <p v-if="seen"> I See You.</p>
+    <!-- v-bind指令给html绑定属性 -->
+    <a v-bind:href="baidu">......</a>
+
+    <!-- 点击click2的时候，不触发click1 有点类似jquery的事件冒泡-->
+    <div @click="click1">
+        <div @click.stop="click2">
+            click on me............................
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    var vm = new Vue({
+        el: "#app",
+        data: {
+            seen:false,
+            baidu:"http://www.baidu.com"
+        },
+        methods:{
+            click1:function () {
+                console.log("click1.............")
+            },
+            click2:function () {
+                console.log("click2.............")
+            }
+        }
+    });
+
+    setTimeout(function () {
+        vm.seen = true;
+    },3000)
+
+</script>
+
+<style type="text/css">
+
+</style>
+</body>
+</html>

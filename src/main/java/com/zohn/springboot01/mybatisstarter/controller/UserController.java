@@ -5,9 +5,7 @@ import com.zohn.springboot01.mybatisstarter.domain.User;
 import com.zohn.springboot01.mybatisstarter.mapper.UserMapper;
 import com.zohn.springboot01.mybatisstarter.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
 
@@ -86,4 +84,13 @@ public class UserController {
     }
 
 
+    @RequestMapping("addUserByVUE")
+    @ResponseBody
+    public Object addUserByVUE(@RequestBody User user){
+        String phone = user.getPhone();
+        System.out.println(phone);
+        user.setCreateTime(new Date());
+        int id = userService.add(user);
+        return JsonData.buildSuccess(id);
+    }
 }
