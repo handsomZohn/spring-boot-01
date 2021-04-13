@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>VUE 组件基础</title>
+    <!-- 注意注意：：：</script> 不能省略 -->
+    <script src="vue.js" type="text/javascript" charset="UTF-8"></script>
+</head>
+<body>
+
+<div id="components-demo">
+    <!-- 用html的方式调用组件 -->
+    <button-counter @clicknow="clicknow"></button-counter>
+    <!-- 复用组件 -->
+    <button-counter title="title02::">
+        这是通过slot标签在组件的模板内部插入html内容
+    </button-counter>
+</div>
+
+<script type="text/javascript">
+    // 第一个参数是组件的【名字】
+    // 第二个参数描述组件的【数据】和【模板内容】
+    Vue.component('button-counter', {
+        props: ['title'],
+        data: function() {
+            return {
+                count: 0
+            }
+        },
+        // 模板内容中定义多个标签时会覆盖，前面的覆盖后面的
+        // 需要在外面再加一层包起来
+        // template: '<div><h1>1111</h1><button v-on:click="count++">{{title}}You clicked me {{count}} times.</button></div>'
+        // v-on指令改成一个可执行的javascript函数
+        template: '<div><h1>1111</h1><button v-on:click="clickfunc">{{title}}You clicked me {{count}} times.</button><slot>插槽</slot></div>',
+        methods: {
+            clickfunc: function() {
+                // 每点击一次count+1的效果
+                this.count++;
+                // 通过this对象的emit方法触发事件
+                // 第一个参数是事件名称，第二个参数是参数
+                this.$emit('clicknow', this.count);
+            }
+        }
+    })
+
+    let vm = new Vue({
+        el: '#components-demo',
+        methods: {
+            clicknow: function(e) {
+                console.log(e);
+            }
+        }
+    })
+</script>
+</body>
+</html>

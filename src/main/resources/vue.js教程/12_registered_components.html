@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>注册组件</title>
+		<script src="vue.js" type="text/javascript" charset="UTF-8"></script>
+	</head>
+	<body>
+		<div id="app">
+			<button-counter></button-counter>
+			<test></test>
+		</div>
+		<script type="text/javascript">
+			// 这种方式注册的是全局注册
+			Vue.component('button-counter', {
+				props: ['title'],
+				data: function() {
+					return {}
+				},
+				template: '<div><h1></h1></div>',
+				methods: {
+
+				}
+			})
+
+			// 局部注册，是在创建VUE对象的时候，用components属性来注册
+			var vm = new Vue({
+				el: '#app',
+				data: {
+
+				},
+				methods: {
+					clicknow: function(e) {
+						console.log(e);
+					}
+				},
+				components: {
+					test: {
+						template:'<h2>h2标题。。。。。。。</h2>'
+					}
+				}
+
+
+			});
+		</script>
+	</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="../vue.js"></script>
+</head>
+<body>
+    <div id = "example1">
+        <demo1></demo1>
+    </div>
+</body>
+
+<script>
+    Vue.component("demo1",{
+        data:function(){
+            return {
+                name:"",
+                age:"",
+                city:""
+            }
+        },
+        template:"<ul><li id='name'>{{name}}</li><li>{{age}}</li><li>{{city}}</li></ul>",
+        created:function(){
+            this.name="唐浩益"
+            this.age = "12"
+            this.city ="杭州"
+            const x = document.getElementById("name");//第一个命令台错误
+            console.log(x.innerHTML);
+        },
+        mounted:function(){
+            const x = document.getElementById("name");//第二个命令台输出的结果
+            console.log(x.innerHTML);
+        }
+    });
+    const vm = new Vue({
+        el: "#example1"
+    });
+</script>
+</html>
