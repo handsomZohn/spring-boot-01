@@ -14,6 +14,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+/**
+ * mysql建表语句转换到pgsql的建表语句
+ */
 public class MysqlDdl2PgDdlUtil {
     public static void main(String[] args) throws IOException, JSQLParserException {
         // MySQL DDL路径

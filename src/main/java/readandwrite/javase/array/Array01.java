@@ -16,7 +16,8 @@ import java.util.Arrays;
 public class Array01 {
     public static void main(String[] args) {
         int[] arr = {3, 1, 45, 56, 32, 54, 56};
-        int[] arr02 = {10, 13, 16, 36, 45, 78, 89, 156}; //3、用到arr02
+        //3、用到arr02
+        int[] arr02 = {10, 13, 16, 36, 45, 78, 89, 156};
         //1、打印数组[原样打印]
         System.out.println("------yuanyangdayin---------");
         printArr(arr);
@@ -83,9 +84,16 @@ public class Array01 {
         max = arr02.length - 1;
         mid = (min + max) / 2;
         while (key != arr02[mid]) {
-            if (key > arr02[mid]) min = mid + 1;
-            if (key < arr02[mid]) max = mid - 1;
-            if (min > max) return -1; //表示不存在该元素
+            if (key > arr02[mid]) {
+                min = mid + 1;
+            }
+            if (key < arr02[mid]) {
+                max = mid - 1;
+            }
+            //表示不存在该元素
+            if (min > max) {
+                return -1;
+            }
             mid = (min + max) / 2;
         }
         return mid;
@@ -103,7 +111,9 @@ public class Array01 {
     static void selectSort(int[] arr) {
         for (int i = 0; i < (getLength(arr) - 1); i++) {
             for (int j = i + 1; j < getLength(arr); j++) {
-                if (arr[i] > arr[j]) swap(arr, i, j);
+                if (arr[i] > arr[j]) {
+                    swap(arr, i, j);
+                }
             }
         }
         printArr(arr);
@@ -113,7 +123,10 @@ public class Array01 {
     static void bubbleSort(int[] arr) {
         for (int x = 0; x < getLength(arr) - 1; x++) {
             for (int y = 0; y < getLength(arr) - x - 1; y++) {
-                if (arr[y] > arr[y + 1]) swap(arr, y, y + 1); //不加if判断条件，默认按照数组元素从大到小【倒序】的顺序排列
+                //不加if判断条件，默认按照数组元素从大到小【倒序】的顺序排列
+                if (arr[y] > arr[y + 1]) {
+                    swap(arr, y, y + 1);
+                }
             }
         }
         printArr(arr);

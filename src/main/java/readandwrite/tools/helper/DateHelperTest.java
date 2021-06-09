@@ -25,4 +25,9 @@ public class DateHelperTest {
 
         System.out.println("当前日期：" + dqsj + "当前日期的后一天：" + rq);
     }
+
+    public static void main(String[] args) {
+        String beforeOrAfterDay = DateHelper.getBeforeOrAfterDay(-7);
+        System.out.println(beforeOrAfterDay);
+    }
 }

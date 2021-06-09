@@ -21,7 +21,8 @@ public class ForByteBuffer {
 
         // 为ByteBuffer分配内存 发现分配的是RAM 就是服务器本身的内存
         // while (true) {
-        ByteBuffer buffer = ByteBuffer.allocate(1024 * 1024 * 1024);// 1024byte = 1kb
+        // 1024byte = 1kb
+        ByteBuffer buffer = ByteBuffer.allocate(1024 * 1024 * 1024);
         System.out.println("buffer:" + buffer);
 
         System.out.println("After allocate:" + Runtime.getRuntime().freeMemory());
@@ -36,7 +37,8 @@ public class ForByteBuffer {
     }
 
     public static void flipTest() {
-        IntBuffer intBuffer = IntBuffer.allocate(10);// 声明一个int缓冲区
+        // 声明一个int缓冲区
+        IntBuffer intBuffer = IntBuffer.allocate(10);
         // 放入数据
         for (int i = 0; i < 5; i++) {
             int nextInt = new SecureRandom().nextInt(10);
@@ -44,7 +46,8 @@ public class ForByteBuffer {
         }
 
         // 读取数据
-        intBuffer.flip();// buffer的读写转换全靠flip方法实现
+        // buffer的读写转换全靠flip方法实现
+        intBuffer.flip();
         while (intBuffer.hasRemaining()) {
             System.out.println(intBuffer.get());
         }

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>flex-demo</title>
+</head>
+<style>
+    div{
+        display: flex;
+        background-color: #666666;
+        width: 80%;
+        height: 300px;
+        justify-content: space-around;
+    }
+
+    div span{
+        /*width: 150px;*/
+        height: 100px;
+        background-color: pink;
+        margin-right: 5px;
+        /*平均分配父盒子宽度*/
+        flex: 1;
+    }
+/*    大的叫做容器 小的叫做项目*/
+/*    通过给父亲添加flex属性，来控制子盒子的位置和排列方式*/
+</style>
+<body>
+<div>
+    <span>1</span>
+    <span>2</span>
+    <span>3</span>
+</div>
+</body>
+</html>
