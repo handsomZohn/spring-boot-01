@@ -7,14 +7,18 @@ public class Lesson1_2 {
 
         int num = 53;
         int m = 1;
-        System.out.println(String.format(" 数字 %d 的二进制向左移 %d 位是 %d", num, m, Lesson1_2.leftShift(num, m)));   // 测试向左移位
-        System.out.println(String.format(" 数字 %d 的二进制向右移 %d 位是 %d", num, m, Lesson1_2.rightShift(num, m)));   // 测试向右移位
+        // 测试向左移位
+        System.out.println(String.format(" 数字 %d 的二进制向左移 %d 位是 %d", num, m, Lesson1_2.leftShift(num, m)));
+        // 测试向右移位
+        System.out.println(String.format(" 数字 %d 的二进制向右移 %d 位是 %d", num, m, Lesson1_2.rightShift(num, m)));
 
         System.out.println();
 
         m = 3;
-        System.out.println(String.format(" 数字 %d 的二进制向左移 %d 位是 %d", num, m, Lesson1_2.leftShift(num, m)));   // 测试向左移位
-        System.out.println(String.format(" 数字 %d 的二进制向右移 %d 位是 %d", num, m, Lesson1_2.rightShift(num, m)));   // 测试向右移位
+        // 测试向左移位
+        System.out.println(String.format(" 数字 %d 的二进制向左移 %d 位是 %d", num, m, Lesson1_2.leftShift(num, m)));
+        // 测试向右移位
+        System.out.println(String.format(" 数字 %d 的二进制向右移 %d 位是 %d", num, m, Lesson1_2.rightShift(num, m)));
 
     }
 
