@@ -231,7 +231,7 @@ public class DateHelper extends DateTools { // 烧茄子盖饭 尖叫腊肉盖�
     public static String getBeforeOrAfterDay(int num){
         Calendar c = Calendar.getInstance();
         c.add(Calendar.DAY_OF_MONTH, num);
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd 00:00:00");
         return sdf.format(c.getTime());
     }
 }

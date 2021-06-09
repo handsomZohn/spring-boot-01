@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>flex-容器常见属性-定义主轴</title>
+    <style>
+        div {
+            display: flex;
+            background-color: #666666;
+            width: 80%;
+            height: 500px;
+            /*    默认的主轴是x轴*/
+            /*    元素是按照主轴的方向排列的*/
+            /*flex-direction: row-reverse;*/
+            /*主轴可以设置为Y轴 那么X轴就是侧轴*/
+            flex-direction: column;
+        }
+
+        div span {
+            width: 150px;
+            height: 100px;
+            background-color: pink;
+            margin-right: 5px;
+
+        }
+    </style>
+<body>
+<div>
+    <span>1</span>
+    <span>2</span>
+    <span>3</span>
+</div>
+</body>
+</html>
