@@ -5,6 +5,8 @@ package readandwrite.tools.helper;
 import org.junit.jupiter.api.Test;
 import readandwrite.tools.helper.datehelper.DateHelper;
 
+import java.util.Date;
+
 /**
  *@Description  
  *@CreateDate   18/08/14 11:44
@@ -29,5 +31,12 @@ public class DateHelperTest {
     public static void main(String[] args) {
         String beforeOrAfterDay = DateHelper.getBeforeOrAfterDay(-7);
         System.out.println(beforeOrAfterDay);
+
+        String s = DateHelper.dateToWeek("2024-05-21");
+
+        System.out.println(s);
+
+        String s1 = DateHelper.dateClearZero("2021-06-11");
+        System.out.println(s1);
     }
 }

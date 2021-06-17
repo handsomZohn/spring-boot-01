@@ -5,6 +5,7 @@ package readandwrite.tools.helper.datehelper;
 import readandwrite.tools.helper.stringhelper.StringHelper;
 
 import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -234,4 +235,48 @@ public class DateHelper extends DateTools { // 烧茄子盖饭 尖叫腊肉盖�
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd 00:00:00");
         return sdf.format(c.getTime());
     }
+
+    public static String dateToWeek(String dateTime){
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        String[] weekDays = {"星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六"};
+        Calendar cal = Calendar.getInstance();
+        Date date;
+        try {
+            date = sdf.parse(dateTime);
+            cal.setTime(date);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        int w = cal.get(Calendar.DAY_OF_WEEK) - 1;
+        return weekDays[w];
+    }
+
+    /**
+     * 去除日期中的0
+     * e.g. 2021-01-01转换为2021年1月1日
+     * @param dateTime
+     * @return
+     */
+    public static String dateClearZero(String dateTime) {
+        Integer year = Integer.parseInt(dateTime.substring(0, 4));
+        Integer month = Integer.parseInt(dateTime.substring(5, 7));
+        Integer day = Integer.parseInt(dateTime.substring(8, 10));
+        StringBuilder res = new StringBuilder();
+        if (year > 0) {
+            res.append(year + "年");
+        }
+        if (month > 0) {
+            res.append(month + "月");
+        }
+        if (day > 0) {
+            res.append(day + "日");
+        }
+        return res.toString();
+    }
+
+    /**
+     * new Date() 转 YYYY-MM-dd HH:mm:ss
+     * e.g. Sun Jun 06 18:13:23 CST 2021 转为
+     */
+    // public static String
 }

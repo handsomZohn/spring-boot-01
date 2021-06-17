@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>flex-垂直居中又水平居中</title>
+</head>
+<style>
+    div{
+        display: flex;
+        background-color: #666666;
+        width: 80%;
+        height: 300px;
+        /*主轴元素排列方式*/
+        justify-content: center;
+        /*侧轴元素排列方式 单行*/
+        /*align-items: center;*/
+
+        /*拉伸 子元素高度不能有 */
+        /*align-items: stretch;*/
+    }
+
+    div span{
+        width: 150px;
+        height: 100px;
+        background-color: pink;
+        margin-right: 5px;
+    }
+</style>
+<body>
+<div>
+    <span>1</span>
+    <span>2</span>
+    <span>3</span>
+</div>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>flex-垂直居中又水平居中</title>
+</head>
+<style>
+    div {
+        display: flex;
+        flex-wrap: wrap;
+        background-color: #666666;
+        width: 30%;
+        height: 300px;
+        /*主轴元素排列方式*/
+        justify-content: center;
+        /*因为有了换行（多行）侧轴元素排列方式不能用align-items*/
+        /*align-items: center;*/
+
+        /*拉伸 子元素高度不能有 */
+        /*align-items: stretch;*/
+
+        /*  从侧轴的头部开始排列  */
+        /*align-content: flex-start;*/
+
+        /*从侧轴的尾部开始排列*/
+        /*align-content: flex-end;*/
+
+        /*沿着侧轴居中*/
+        align-content: center;
+
+        /*贴着上边或者下边*/
+        align-content: space-between;
+    }
+
+    div span {
+        width: 150px;
+        height: 100px;
+        background-color: pink;
+        margin: 10px;
+    }
+</style>
+<body>
+<div>
+    <span>1</span>
+    <span>2</span>
+    <span>3</span>
+    <span>4</span>
+    <span>5</span>
+    <span>6</span>
+</div>
+</body>
+</html>

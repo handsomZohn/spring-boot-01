@@ -20,7 +20,7 @@ import java.util.stream.Collectors;
 public class MysqlDdl2PgDdlUtil {
     public static void main(String[] args) throws IOException, JSQLParserException {
         // MySQL DDL路径
-        String mysqlDDLPath = "C:\\Users\\zzohn\\Desktop\\九思\\工作安排\\20210526--629--整理会计引擎dev2.0 flyway脚本初始化\\V2.0.0_202105261330__DDL.sql";
+        String mysqlDDLPath = "C:\\Users\\zzohn\\Desktop\\九思\\工作安排\\20210608--会计引擎日志功能\\V2.0.0_202106150916__DDL.sql";
         String dDLs = FileUtils.readFileToString(new File(mysqlDDLPath));
 
         System.out.println(dDLs);
@@ -62,6 +62,7 @@ public class MysqlDdl2PgDdlUtil {
                     .replaceAll("IF NOT EXISTS", "")
                     .replaceAll("TINYINT", "SMALLINT")
                     .replaceAll("DATETIME", "TIMESTAMP")
+                    .replaceAll("datetime", "TIMESTAMP")
                     .replaceAll("JSON", "JSONB")
                     .replaceAll(", PRIMARY KEY \\(\"id\"\\)", "");
 

@@ -11,16 +11,24 @@
         width: 80%;
         height: 800px;
         /*justify-content: space-around;*/
+        /*flex-direction:row;  是默认值*/
         flex-direction: column;
+        /*justify-content：flex-start; 是默认值*/
         /*justify-content: flex-end;*/
+
+        /*让子元素居中对齐*/
         /*justify-content: center;*/
 
         /*    平分剩余空间  每个元素都有相同的margin-left和margin-right*/
         /*justify-content: space-around;*/
-        /*    先两边贴边 在分配剩余的空间*/
+
+        /*    先两边贴边 zai分配剩余的空间*/
         /*justify-content: space-between;*/
-        /*    垂直居中*/
-        justify-content: center;
+
+        /*    垂直居中  主轴先设置成竖着的*/
+        /*justify-content: center;*/
+
+        justify-content: space-between;
 
     }
 
@@ -36,7 +44,6 @@
     <span>1</span>
     <span>2</span>
     <span>3</span>
-    <span>4</span>
 </div>
 </body>
 </html>
