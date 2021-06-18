@@ -1,0 +1,38 @@
+public VoucherDO synchroFinance(@PathVariable("voucherId") String voucherId) {
+        List<String> voucherIds = new ArrayList<>();
+        voucherIds.add(voucherId);
+
+        // 异步处理代码块
+        CallAccAsyncHandler handler = new CallAccAsyncHandler() {
+            @Override
+            public void handle() {
+                voucherService.synchroFinance(voucherIds);
+            }
+        };
+        handler.callback();
+
+
+        List<VoucherDO> voucherVOList = voucherService.queryByIds(voucherIds);
+        if (voucherVOList.size() > 0) {
+            VoucherDO voucherDO = voucherVOList.get(0);
+            voucherDO.setVoucherId("timeout");
+            return voucherDO;
+        }
+        return null;
+    }
+
+
+
+// 异步的抽象类方法
+public abstract class CallAccAsyncHandler {
+    public void callback() {
+        new Thread(() -> {
+            handle();
+        }).start();
+    }
+
+    /**
+     * 异步处理事件
+     */
+    public abstract void handle();
+}
