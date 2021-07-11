@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        @keyframes move {
+            0% {
+                width: 0;
+            }
+            60% {
+                width: 60%;
+            }
+        }</style>
+</head>
+<body>
+
+静态进度条
+
+<div>
+    <div role="progressbar" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100" style="width:  30%;">
+        <span>30% </span></div>
+
+
+    <h1>进度条</h1>
+    <div id="container">
+        <div id="shuzhi">
+            <div id="fill"></div>
+        </div>
+    </div>
+
+</body>
+
+<script type="text/javascript">       var shuzhi = {
+    init: function () {
+        var fill = document.getElementById('fill');
+        var count = 0;         //设置定位器
+        var timer = setInterval(function (e) {
+            count++;
+            fill.innerHTML = count + '%';
+            //清除定位器
+//
+            if (count === 60) clearInterval(timer);
+        }, 60);
+    }
+};
+shuzhi.init();
+
+</script>
+</html>
