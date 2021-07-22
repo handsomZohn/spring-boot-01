@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>js中对象数组去重</title>
+</head>
+<body>
+
+</body>
+<script>
+    var person = [
+        {
+            id: 1,
+            name: "赵一"
+        },
+        {
+            id: 2,
+            name: "陈二"
+        },
+        {
+            id: 3,
+            name: "张三"
+        },
+        {
+            id: 4,
+            name: "李四"
+        },
+        {
+            id: 5,
+            name: "王五"
+        },
+        {
+            id: 6,
+            name: "张三"
+        },
+        {
+            id: 7,
+            name: "王五"
+        },
+    ];
+
+    var obj = {};
+    person = person.reduce((current, next) => {
+        obj[next.name] ? "" : obj[next.name] = true && current.push(next);
+        return current;
+    }, []) //设置current默认类型为数组，并且初始值为空的数组
+
+    console.log(person) // person数组只剩下五项，name重复的张三和王五已去除
+
+</script>
+</html>

@@ -63,5 +63,8 @@ public class ForZhu {
         List<String> stringList = Arrays.stream(str).collect(Collectors.toList());
         // 不推荐使用的方法
         // Arrays.asList(str);
+
+        // 去重
+        List<Student> collect1 = students.stream().distinct().collect(Collectors.toList());
     }
 }

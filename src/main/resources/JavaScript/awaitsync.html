@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    function requestSomething(){
+        console.log(111)
+        getSomething().then(res=>console.log(res))
+        console.log(333)
+
+        // 111 333 222
+    }
+
+    function getSomething(){
+        return new Promise(resolve => {
+            setTimeout(() => resolve(222), 3000)
+        })
+    }
+
+    async function requestSomethingAsync(){
+        console.log(111)
+        // 这时，something会等到异步请求的结果回来后进行赋值，同时不会执行后面的代码
+        const something = await getSomething()
+        console.log(something)
+        console.log(333)
+        // 111 222 333
+    }
+</script>
+</html>
