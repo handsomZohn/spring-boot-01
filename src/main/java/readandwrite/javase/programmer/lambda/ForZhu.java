@@ -65,7 +65,7 @@ public class ForZhu {
         // 不推荐使用的方法
         // Arrays.asList(str);
 
-        // 去重
+        // 去重 直接去重和根据对象属性去重
         List<Student> collect1 = students.stream().distinct().collect(Collectors.toList());
         System.out.println(students);
         // students.stream().filter(dis)

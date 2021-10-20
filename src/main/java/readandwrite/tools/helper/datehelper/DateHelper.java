@@ -223,11 +223,12 @@ public class DateHelper extends DateTools { // 烧茄子盖饭 尖叫腊肉盖�
         return dateFmt(rq, "yyyy-MM", "yyyyMMdd") + "235959";
     }
 
+
     /**
      * 得到 几天后(几天前的日期)的 日期
      * 方法描述: 几天后num为正数，几天前num为负数
-     * @参数类型:@return
-     * @返回值:String
+     * @param num
+     * @return
      */
     public static String getBeforeOrAfterDay(int num){
         Calendar c = Calendar.getInstance();
@@ -278,5 +279,10 @@ public class DateHelper extends DateTools { // 烧茄子盖饭 尖叫腊肉盖�
      * new Date() 转 YYYY-MM-dd HH:mm:ss
      * e.g. Sun Jun 06 18:13:23 CST 2021 转为
      */
-    // public static String
+
+
+    public static void main(String[] args) {
+        String beforeOrAfterDay = getBeforeOrAfterDay(-7);
+        System.out.println(beforeOrAfterDay);
+    }
 }
