@@ -46,4 +46,10 @@ public class DistinctByOcjectField {
         System.out.println("根据name去重后：");
         System.out.println(objectMapper.writeValueAsString(studentList));
     }
+
+//    结果如下：
+//    根据name去重前：
+//            [{"name":"张三","age":"18","grade":"二年级","id":1},{"name":"张三","age":"18","grade":"二年级","id":1}]
+//    根据name去重后：
+//            [{"name":"张三","age":"18","grade":"二年级","id":1}]
 }
