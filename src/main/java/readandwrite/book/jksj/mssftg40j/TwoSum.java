@@ -1,5 +1,6 @@
 package readandwrite.book.jksj.mssftg40j;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -57,6 +58,11 @@ public class TwoSum {
 
     public static void main(String[] args) {
         int[] ints = new TwoSum().twoSum(new int[]{1, 9}, 10);
-        System.out.println(ints.toString());
+
+        int[] ints2 = new TwoSum().twoSum2(new int[]{1,56,78,44,33,77}, 100);
+
+        System.out.println(Arrays.toString(ints));
+
+        System.out.println(Arrays.toString(ints2));
     }
 }

@@ -14,10 +14,13 @@ public class BinarySearch {
             mid = (height - low) / 2 + low;
             if (array[mid] == a) {
                 return mid;
-            } else if (array[mid] > a ) {
+            } else if (array[mid] > a) {
                 // 向左查找
                 height = mid - 1;
-            } else low = mid + 1;// 向右 查找
+            } else {
+                // 向右 查找
+                low = mid + 1;
+            }
         }
         return -1;
     }
