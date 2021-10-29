@@ -29,5 +29,13 @@ public class Test {
         System.out.println("=================================删除之后的遍历=============================================");
         singleLinkedList.delete(2);
         singleLinkedList.traverse();
+
+        int x = 30;
+
+        String name = "name";
+
+        if (name == null) {
+
+        }
     }
 }
