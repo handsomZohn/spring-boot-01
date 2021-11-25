@@ -1,12 +1,13 @@
 package readandwrite.tools.helper.datehelper;
 
 
-
 import readandwrite.tools.helper.stringhelper.StringHelper;
 
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -227,17 +228,18 @@ public class DateHelper extends DateTools { // 烧茄子盖饭 尖叫腊肉盖�
     /**
      * 得到 几天后(几天前的日期)的 日期
      * 方法描述: 几天后num为正数，几天前num为负数
+     *
      * @param num
      * @return
      */
-    public static String getBeforeOrAfterDay(int num){
+    public static String getBeforeOrAfterDay(int num) {
         Calendar c = Calendar.getInstance();
         c.add(Calendar.DAY_OF_MONTH, num);
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd 00:00:00");
         return sdf.format(c.getTime());
     }
 
-    public static String dateToWeek(String dateTime){
+    public static String dateToWeek(String dateTime) {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         String[] weekDays = {"星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六"};
         Calendar cal = Calendar.getInstance();
@@ -255,6 +257,7 @@ public class DateHelper extends DateTools { // 烧茄子盖饭 尖叫腊肉盖�
     /**
      * 去除日期中的0
      * e.g. 2021-01-01转换为2021年1月1日
+     *
      * @param dateTime
      * @return
      */
@@ -281,8 +284,87 @@ public class DateHelper extends DateTools { // 烧茄子盖饭 尖叫腊肉盖�
      */
 
 
-    public static void main(String[] args) {
-        String beforeOrAfterDay = getBeforeOrAfterDay(-7);
+    /**
+     * @Author viy
+     * @Description 获取指定日期的前几日后几日，如不指定默认今天
+     * @Date 11:14 2021/11/23
+     * @Param [num, year, month, day]
+     * @return java.lang.String
+     **/
+    public static String getBeforeOrAfterDay(int num, int year, int month, int day) {
+        Calendar c = Calendar.getInstance();
+
+        // 要获取指定日期，传入年月日
+        if (year != 0 && month != 0 && day != 0) {
+            c.set(year, month - 1, day);
+        }
+        c.add(Calendar.DATE, num);
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd 00:00:00");
+        return sdf.format(c.getTime());
+    }
+
+    /**
+     * @Author viy
+     * @Description 数组形式返回年月日
+     * @Date 11:32 2021/11/23
+     * @Param []
+     * @return int[]
+     **/
+    public static int[] getYMD(){
+        Calendar instance = Calendar.getInstance();
+        int year = instance.get(Calendar.YEAR);
+        int month = instance.get(Calendar.MONTH) + 1;
+        int day = instance.get(Calendar.DAY_OF_MONTH);
+        int[] ints = {year, month, day};
+        return ints;
+    }
+
+    /**
+     * @Description 获取当前日期
+     * @Date 15:10 2021/11/23
+     * @Param []
+     * @return java.lang.String
+     **/
+    public static String getNowDate(String fmt){
+        return new SimpleDateFormat(fmt).format(Calendar.getInstance().getTime());
+    }
+
+
+    /*public static void getDateIntervalDays(String date, String date2) throws ParseException{
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        Date parse = sdf.parse(date);
+        Date parse1 = sdf.parse(date2);
+        int l = (int) ((parse1.getTime() - parse.getTime()) / (1000 * 3600 * 24));
+        System.out.println(l);
+    }*/
+
+    public static int getDateIntervalDays(String dateStart, String dateEnd) throws ParseException {
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        Date parse = sdf.parse(dateStart);
+        Date parse1 = sdf.parse(dateEnd);
+        int l = (int) ((parse1.getTime() - parse.getTime()) / (1000 * 3600 * 24));
+        return l + 1;
+    }
+
+    public static void main(String[] args) throws ParseException {
+        String beforeOrAfterDay = getBeforeOrAfterDay(-7, 0, 0, 0);
         System.out.println(beforeOrAfterDay);
+        String beforeOrAfterDay1 = getBeforeOrAfterDay(-1, 2021, 11, 20);
+        System.out.println(beforeOrAfterDay1);
+
+
+        System.out.println("输出年月日信息");
+        int[] ymd = getYMD();
+        System.out.println(Arrays.toString(ymd));
+
+
+        System.out.println("获取当前日期");
+        String nowDate = getNowDate("yyyy-MM-dd");
+        System.out.println(nowDate);
+
+
+        int dateIntervalDays = getDateIntervalDays("2021-11-21", "2021-11-25");
+
+        System.out.println(dateIntervalDays);
     }
 }

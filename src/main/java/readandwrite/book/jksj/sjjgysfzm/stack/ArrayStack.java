@@ -40,6 +40,7 @@ public class ArrayStack {
             // 数组空间已满
             return false;
         }
+        // 将item放到下标为count的位置，并且count加1
         items[count] = item;
         ++count;
         return true;

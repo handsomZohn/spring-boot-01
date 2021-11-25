@@ -1,5 +1,6 @@
 package readandwrite.tools.helper.datehelper;
 
+import java.text.ParseException;
 import java.text.ParsePosition;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -337,7 +338,7 @@ public class DateTools {
         return restr;
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws ParseException {
         DateTools dt = new DateTools();
 
         try {

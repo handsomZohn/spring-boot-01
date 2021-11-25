@@ -1,7 +1,10 @@
 package readandwrite.javase.map;
 
+import java.util.Collection;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 public class PutOfHashMap {
     public static void main(String[] args) {
@@ -18,5 +21,7 @@ public class PutOfHashMap {
 
         int i2 = i1 & (map.size() - 1);
         System.out.println("======^_^======variable i2 value is : " + i2 + ", " + " current method and class name is : PutOfHashMap.main()");
+
+        Collections.synchronizedMap(map);
     }
 }
