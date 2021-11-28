@@ -1,11 +1,16 @@
 package readandwrite.tools.helper.datehelper;
 
 
+import lombok.experimental.var;
+import lombok.val;
 import readandwrite.tools.helper.stringhelper.StringHelper;
 
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.YearMonth;
+import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
@@ -285,11 +290,11 @@ public class DateHelper extends DateTools { // 烧茄子盖饭 尖叫腊肉盖�
 
 
     /**
+     * @return java.lang.String
      * @Author viy
      * @Description 获取指定日期的前几日后几日，如不指定默认今天
      * @Date 11:14 2021/11/23
      * @Param [num, year, month, day]
-     * @return java.lang.String
      **/
     public static String getBeforeOrAfterDay(int num, int year, int month, int day) {
         Calendar c = Calendar.getInstance();
@@ -304,13 +309,13 @@ public class DateHelper extends DateTools { // 烧茄子盖饭 尖叫腊肉盖�
     }
 
     /**
+     * @return int[]
      * @Author viy
      * @Description 数组形式返回年月日
      * @Date 11:32 2021/11/23
      * @Param []
-     * @return int[]
      **/
-    public static int[] getYMD(){
+    public static int[] getYMD() {
         Calendar instance = Calendar.getInstance();
         int year = instance.get(Calendar.YEAR);
         int month = instance.get(Calendar.MONTH) + 1;
@@ -320,12 +325,12 @@ public class DateHelper extends DateTools { // 烧茄子盖饭 尖叫腊肉盖�
     }
 
     /**
+     * @return java.lang.String
      * @Description 获取当前日期
      * @Date 15:10 2021/11/23
      * @Param []
-     * @return java.lang.String
      **/
-    public static String getNowDate(String fmt){
+    public static String getNowDate(String fmt) {
         return new SimpleDateFormat(fmt).format(Calendar.getInstance().getTime());
     }
 
@@ -338,33 +343,110 @@ public class DateHelper extends DateTools { // 烧茄子盖饭 尖叫腊肉盖�
         System.out.println(l);
     }*/
 
-    public static int getDateIntervalDays(String dateStart, String dateEnd) throws ParseException {
+    /**
+     * @return int
+     * @Description 获取两个日期时间间隔 包括两端
+     * @Date 15:45 2021/11/23
+     * @Param [dateStart, dateEnd]
+     **/
+    public static int getDateIntervalDays(String dateStart, String dateEnd) {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-        Date parse = sdf.parse(dateStart);
-        Date parse1 = sdf.parse(dateEnd);
+        Date parse = null;
+        Date parse1 = null;
+        try {
+            parse = sdf.parse(dateStart);
+            parse1 = sdf.parse(dateEnd);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
         int l = (int) ((parse1.getTime() - parse.getTime()) / (1000 * 3600 * 24));
-        return l + 1;
+        return l;
     }
 
+
+    /**
+     * @return java.lang.String
+     * @Author viy
+     * @Description 获取前num个月[获取后num个月，传递负数]
+     * @Date 20:16 2021/11/28
+     * @Param [num, nowDate（yyyy-MM格式）]
+     **/
+    public static String getBeforeOrAfterMonth(int num, String nowDate) {
+        YearMonth parse = YearMonth.parse(nowDate);
+        // plus 向后取 传递复数向前取
+        // String s = parse.plus(num, ChronoUnit.MONTHS).toString();
+        // minus 向前取 传递复数向后取
+        String s1 = parse.minus(num, ChronoUnit.MONTHS).toString();
+        return s1;
+    }
+
+
+    /**
+     * @return int
+     * @Author viy
+     * @Description 获取月份间隔
+     * @Date 20:44 2021/11/28
+     * @Param [startDate, endDate]
+     **/
+    public static int getMonthsInterval(String startDate, String endDate) {
+        int interval = 0;
+        SimpleDateFormat fmt = new SimpleDateFormat("yyyy-MM-dd");
+        Date startDate1 = null;
+        Date endDate1 = null;
+        try {
+            startDate1 = fmt.parse(startDate);
+            endDate1 = fmt.parse(endDate);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(startDate1);
+        int sYear = calendar.get(Calendar.YEAR);
+        int sMonth = calendar.get(Calendar.MONTH);
+        calendar.setTime(endDate1);
+        int eYear = calendar.get(Calendar.YEAR);
+        int eMonth = calendar.get(Calendar.MONTH);
+        interval = ((eYear - sYear) * 12 + (eMonth - sMonth));
+        return interval + 1;
+    }
+
+    /**
+     * @Author viy
+     * @Description 根据日期获取当月第一天和最后一天
+     * @Date 21:05 2021/11/28
+     * @Param [date, startOrEnd]
+     * @return java.lang.String
+     **/
+    /**
+     * @return java.lang.String
+     * @Description 根据日期获取当月最后一天
+     * @Date 21:05 2021/11/28
+     * @Param [date, startOrEnd]
+     **/
+    public static String getLastDayOfMonth(String date) {
+        Calendar cale = Calendar.getInstance();
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+        try {
+            cale.setTime(formatter.parse(date));
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        cale.add(Calendar.MONTH, 1);
+        cale.set(Calendar.DAY_OF_MONTH, 0);
+        return formatter.format(cale.getTime());
+    }
+
+
     public static void main(String[] args) throws ParseException {
-        String beforeOrAfterDay = getBeforeOrAfterDay(-7, 0, 0, 0);
-        System.out.println(beforeOrAfterDay);
-        String beforeOrAfterDay1 = getBeforeOrAfterDay(-1, 2021, 11, 20);
-        System.out.println(beforeOrAfterDay1);
+        String nowDate = getNowDate("yyyy-MM");
+        String beforeOrAfterMonth = getBeforeOrAfterMonth(1, nowDate);
+        System.out.println(beforeOrAfterMonth);
 
+        int monthsInterval = getMonthsInterval("2021-08-23", "2021-11-21");
+        System.out.println(monthsInterval);
 
-        System.out.println("输出年月日信息");
-        int[] ymd = getYMD();
-        System.out.println(Arrays.toString(ymd));
-
-
-        System.out.println("获取当前日期");
-        String nowDate = getNowDate("yyyy-MM-dd");
-        System.out.println(nowDate);
-
-
-        int dateIntervalDays = getDateIntervalDays("2021-11-21", "2021-11-25");
-
-        System.out.println(dateIntervalDays);
+        String firstOrLastDayOfMonth = getLastDayOfMonth("2021-11-11");
+        System.out.println(firstOrLastDayOfMonth);
     }
 }
