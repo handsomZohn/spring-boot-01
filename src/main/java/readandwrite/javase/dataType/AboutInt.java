@@ -1,5 +1,7 @@
 package readandwrite.javase.dataType;
 
+import org.junit.jupiter.api.Test;
+
 import java.math.BigInteger;
 import java.util.Random;
 
@@ -42,5 +44,36 @@ class EffectiveJava {
 			BigInteger bigInteger = new BigInteger(0, 0, new Random(2));
 			System.out.println(bigInteger);
 		}
+	}
+
+
+	public int returnI(){
+		int i = 10;
+		// 先加后返回11
+		// return ++i;
+
+		// 返回的是加之前的值
+		// System.out.println(i++);
+		// System.out.println(i);
+		return i++;
+	}
+
+
+	@Test
+	public void returnITest(){
+		/*EffectiveJava effectiveJava = new EffectiveJava();
+		int i = effectiveJava.returnI();
+		System.out.println(i);*/
+
+		int i = 0;
+		int j = i++ + ++i;
+
+		// 首选运行+运算
+		// 0+ ++i
+		// i++
+		// 0 + ++1
+		// 0+2=2
+		System.out.println(i);
+		System.out.println(j);
 	}
 }

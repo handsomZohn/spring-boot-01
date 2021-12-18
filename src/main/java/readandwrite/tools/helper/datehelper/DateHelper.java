@@ -411,13 +411,6 @@ public class DateHelper extends DateTools { // 烧茄子盖饭 尖叫腊肉盖�
     }
 
     /**
-     * @Author viy
-     * @Description 根据日期获取当月第一天和最后一天
-     * @Date 21:05 2021/11/28
-     * @Param [date, startOrEnd]
-     * @return java.lang.String
-     **/
-    /**
      * @return java.lang.String
      * @Description 根据日期获取当月最后一天
      * @Date 21:05 2021/11/28

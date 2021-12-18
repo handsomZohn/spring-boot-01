@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>渐变色</title>
+    <!-- css3引入的新属性   -->
+    <style>
+
+        *{
+            font-family: 楷体;
+            font-size: 14px;
+        }
+
+        /* 文字渐变  https://www.jianshu.com/p/3a5bbfbf5957 */
+        ul{
+            background-image: linear-gradient(to right, orange, red);
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+
+        div {
+            margin-left: 24px;
+            margin-bottom: 24px;
+        }
+
+        .linear-gradient-direction {
+            width: 200px;
+            height: 100px;
+            background-image: linear-gradient(to left, red, blue, pink);
+        }
+
+        .linear-gradient-deg {
+            width: 200px;
+            height: 100px;
+            /*background-image: linear-gradient(to right, red, blue, pink);*/
+            background-image: linear-gradient(180deg, red 70%, blue, pink);
+        }
+
+        .linear-gradient-mobile {
+            width: 375px;
+            height: 500px;
+            /*background-image: linear-gradient(to right, red, blue, pink);*/
+            background-image: linear-gradient(236deg,orange, white);
+        }
+    </style>
+</head>
+<body>
+<ul>
+    <li>语法格式：background-image: linear-gradient（）</li>
+    <li>渐变色的方向:上下左右对角线</li>
+    <li>用法:to 方向词（right、left、top、bottom）</li>
+</ul>
+<div class="linear-gradient-direction">
+
+</div>
+
+<ul>
+    <li>语法格式：background-image: linear-gradient（）</li>
+    <li>渐变色的方向:角度</li>
+    <li>用法:to 方向词（right、left、top、bottom）默认90度</li>
+    <li>注意事项：90就相当于to right；<br/>
+        下面是0deg，<b>逆时针</b>依次为90deg 180deg 270deg<br/>
+        颜色后面可以跟上百分数，表示颜色渲染起点 不是占比，实际开发一般不改<br/>
+    </li>
+</ul>
+<div class="linear-gradient-deg">
+
+</div>
+
+<div class="linear-gradient-mobile">
+
+</div>
+</body>
+</html>

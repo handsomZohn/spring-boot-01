@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script type="text/javascript">
+    var data = [{
+        name: "zhao",
+        age: 22,
+        date: '2021-11-24'
+    }, {
+        name: "qian",
+        age: 21,
+        date: '2021-01-24'
+    }, {
+        name: "sun",
+        age: 25,
+        date: '2021-09-24'
+    }];
+
+    //定义一个比较器
+    function compare(propertyName, asc) {
+        return function (a, b) {
+            return 'asc' === asc ? (a[propertyName] > b[propertyName]) : (a[propertyName] < b[propertyName]);
+        }
+    }
+
+    //使用方法
+    // data = data.sort(compare('age', 'asc'));
+    // console.log(data);
+
+
+    // var a = [9, 6, 5, 7, 11, 52, 15];
+    // a.sort(function(a, b){return a-b});
+    // console.log('a:' + a);
+
+    // data.sort(function(a,b){return a.age - b.age})
+    // console.log(data)
+
+    data.sort((a, b) => {
+        return a['date'].replaceAll('-', '') - b['date'].replaceAll('-', '')
+    })
+    console.log(data);
+    // console.log(data)
+</script>
+</html>
