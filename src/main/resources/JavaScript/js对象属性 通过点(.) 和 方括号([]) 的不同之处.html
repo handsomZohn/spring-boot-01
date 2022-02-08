@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>js对象属性 通过点(.) 和 方括号([]) 的不同之处</title>
+</head>
+<body>
+
+</body>
+</html>
+
+<script>
+    // js对象的属性通过.(点)访问和通过[](中括号)访问的不同之处：
+    // 点操作符：静态不可改变；属性名称；无法修改
+    // 中括号操作符：动态可变；方括号中是一个计算结果为字符串的表达式；可以修改和创建
+
+    // 主要有以下区别：
+
+    // 1、[]可以用作变量作为属性名或访问，但是点方法不可以
+    var obj = {};
+    obj.name = '张三'
+    var myName = 'name'
+
+    // undefined 访问不到对应的属性
+    console.log(obj.myName)
+    // 张三
+    console.log(obj[myName])
+
+    var person = {name: 'gogo'}
+
+    // gogo
+    console.log(person["name"])
+    // gogo
+    console.log(person.name)
+
+    var propertyName = 'name'
+    // gogo
+    console.log(person[propertyName])
+    var propertyName2 = 'name2'
+    // undefined
+    console.log(person[propertyName2])
+
+    // 2、[]可以用数字作为属性名，但是点方法不可以
+    var obj2 = {}
+    // Uncaught SyntaxError: Unexpected number
+    // obj2.1=1
+    obj2[2] = 2
+    // console.log(obj2.1)
+    console.log(obj2[2])
+    console.log(obj2)
+
+    // 3、[]可以动态访问属性名，可以在程序运行时创建和修改属性，点操作符不可以
+    // []--可以动态设置和获取
+    var customer = {}
+    var addr = ['北京', '上海', '广州', '深圳']
+    for (let i = 0; i < 4; i++) {
+        customer["address" + i] = addr[i]
+    }
+    console.log(addr)
+    console.log(customer)
+    var str = "";
+    for (let i = 0; i < 4; i++) {
+        str += customer["address" + i] + "\t";
+    }
+    console.log(str)
+
+    // 4、如果属性命中包含会导致语法错误的字符，或者属性名字是关键字或者保留字，也可以使用方括号表示法。
+    // 如：（属性名是关键字或者保留字--点语法不严谨，不报错）
+    person['first name'] = 'gogo2'
+    // 方括号表示法，可以正确获取到值
+    console.log(person['first name'])
+    // 点语法不行，这样写直接语法错误
+    // console.log(person.first name)
+
+    person['for']='gogo_for';
+    person.if = 'gogo_if';
+    console.log(person['for'])
+    console.log(person.for)
+    console.log(person['if'])
+    console.log(person.if)
+
+</script>

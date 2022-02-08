@@ -10,5 +10,6 @@ public class GetOSName {
     public static void main(String[] args) {
         System.out.println("Name of OS: " + System.getProperty("os.name"));
         System.out.println("Arch of OS: " + System.getProperty("os.arch"));
+        System.out.println("plugin.confPath: " + System.getProperty("user.dir"));
     }
 }
